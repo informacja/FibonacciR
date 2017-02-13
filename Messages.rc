@@ -1,0 +1,8 @@
+#include  "messages.rh"
+
+STRINGTABLE
+BEGIN
+     ID_MSG1 "Ulubione majtki programisty?		Stringi!";
+     ID_MSG2 "Drugi komunikat";
+     ID_MSG3 "Nazwa etykiety";
+END

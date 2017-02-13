@@ -1,0 +1,8 @@
+#ifndef MESSAGES_RH
+#define MESSAGES_RH
+
+#define ID_MSG1 (100)
+#define ID_MSG2 (101)
+#define ID_MSG3 (103)
+
+#endif
