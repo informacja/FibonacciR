@@ -50,6 +50,7 @@ __published:	// IDE-managed Components
 	void __fastcall FullInfo1Click(TObject *Sender);
 	void __fastcall arciki1Click(TObject *Sender);
 	void __fastcall LabelarcikClick(TObject *Sender);
+	void __fastcall FormKeyPress(TObject *Sender, System::WideChar &Key);
 //	void Pobierz();
 private:
 

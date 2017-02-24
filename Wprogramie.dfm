@@ -2507,11 +2507,13 @@ object Form3: TForm3
     FE00007FFE00007FFE0000000000000000000000000000000000000000000000
     0000000000000000000000000000000000000000000000000000000000000000
     000000000000000000000000000000}
+  KeyPreview = True
   OldCreateOrder = False
   PopupMenu = PopupMenu1
   Position = poDesktopCenter
   PrintScale = poPrintToFit
   Scaled = False
+  OnKeyPress = FormKeyPress
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

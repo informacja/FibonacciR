@@ -1,0 +1,1 @@
+delphi compiler -Linking -minimum stack size : 16384

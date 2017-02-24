@@ -2505,6 +2505,7 @@ object Form2: TForm2
     FE00007FFE00007FFE0000000000000000000000000000000000000000000000
     0000000000000000000000000000000000000000000000000000000000000000
     000000000000000000000000000000}
+  KeyPreview = True
   OldCreateOrder = False
   Position = poOwnerFormCenter
   PrintScale = poPrintToFit
@@ -2513,6 +2514,7 @@ object Form2: TForm2
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnKeyPress = FormKeyPress
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
@@ -2525,11 +2527,10 @@ object Form2: TForm2
     Margins.Top = 0
     Margins.Right = 0
     Margins.Bottom = 0
-    ActivePage = TabSheet4
+    ActivePage = TabSheet1
     Align = alClient
-    BiDiMode = bdLeftToRight
     MultiLine = True
-    ParentBiDiMode = False
+    ScrollOpposite = True
     TabOrder = 0
     TabStop = False
     object TabSheet1: TTabSheet
@@ -2569,6 +2570,7 @@ object Form2: TForm2
         Text = '                 '
         TextHint = 'Extras'
         OnChange = MaskEditKodChange
+        OnClick = MaskEditKodClick
       end
       object CheckBox3: TCheckBox
         Left = 13
@@ -2896,8 +2898,8 @@ object Form2: TForm2
         OnKeyPress = MaskEditInkremKeyPress
       end
       object HotKey1: THotKey
-        Left = 30
-        Top = 109
+        Left = 19
+        Top = 101
         Width = 121
         Height = 19
         HotKey = 32833
@@ -3232,10 +3234,10 @@ object Form2: TForm2
       object Label2: TLabel
         Left = 15
         Top = 62
-        Width = 76
+        Width = 89
         Height = 13
         Hint = 'Po ilu znale'#378'onych plikach zapyta'#263' czy kontynuowa'#263' (0-99999999)'
-        Caption = 'Kiedy przerwa'#263' '
+        Caption = 'Limit wyszukiwania'
         ParentShowHint = False
         ShowHint = True
         OnClick = Label2Click
@@ -3243,12 +3245,12 @@ object Form2: TForm2
       object Label3: TLabel
         Left = 15
         Top = 24
-        Width = 127
+        Width = 120
         Height = 13
         Hint = 
           'Ilo'#347#263' podfolder'#243'w kt'#243're b'#281'd'#261' uwzgledniane przy przeszukiwaniu (0' +
           '-255)'
-        Caption = 'G'#322#281'boko'#347#263' przeszukiwania '
+        Caption = 'G'#322#281'boko'#347#263' (podfolder'#243'w)'
         ParentShowHint = False
         ShowHint = True
         OnClick = Label3Click
@@ -3286,15 +3288,15 @@ object Form2: TForm2
         OnClick = LabelDefProgPathClick
       end
       object ComboBox1: TComboBox
-        Left = 148
+        Left = 140
         Top = 21
-        Width = 49
+        Width = 35
         Height = 21
         Hint = 'Zakres od 0 do 255 ( 0 = Unlimited )'
         ParentCustomHint = False
         AutoComplete = False
         AutoDropDown = True
-        DoubleBuffered = False
+        DoubleBuffered = True
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
@@ -3326,14 +3328,16 @@ object Form2: TForm2
           '250')
       end
       object ComboBox2: TComboBox
-        Left = 105
+        Left = 110
         Top = 59
         Width = 65
         Height = 21
         Hint = 'Liczba plik'#243'w po kt'#243'rej program zapyta czy szuka'#263' nadal'
         AutoComplete = False
         AutoDropDown = True
+        DoubleBuffered = True
         MaxLength = 8
+        ParentDoubleBuffered = False
         ParentShowHint = False
         ShowHint = True
         TabOrder = 1
@@ -3575,6 +3579,18 @@ object Form2: TForm2
         TabOrder = 13
         OnClick = Button5Click
       end
+      object ButtonClose: TButton
+        Left = 402
+        Top = 169
+        Width = 75
+        Height = 25
+        Cancel = True
+        Caption = 'Close'
+        Default = True
+        TabOrder = 14
+        OnClick = ButtonCloseClick
+        OnKeyPress = ButtonCloseKeyPress
+      end
     end
     object TabSheet6: TTabSheet
       Caption = 'Obraz'
@@ -3582,9 +3598,9 @@ object Form2: TForm2
       object PageControl2: TPageControl
         Left = 0
         Top = 0
-        Width = 409
+        Width = 477
         Height = 197
-        ActivePage = TabSheet8
+        ActivePage = TabSheet7
         Align = alCustom
         TabOrder = 0
         Visible = False
@@ -3710,7 +3726,7 @@ object Form2: TForm2
           ImageIndex = 1
           object GroupBox7: TGroupBox
             AlignWithMargins = True
-            Left = 153
+            Left = 221
             Top = 3
             Width = 245
             Height = 163
@@ -3932,10 +3948,10 @@ object Form2: TForm2
   end
   object ImageList1: TImageList
     ShareImages = True
-    Left = 392
-    Top = 192
+    Left = 368
+    Top = 168
     Bitmap = {
-      494C0101030008005C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800640110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

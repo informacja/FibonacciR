@@ -79,8 +79,8 @@
         <AllPackageLibs>rtl.lib;vcl.lib;VclSmp.lib;vclx.lib;bcbsmp.lib;vclimg.lib;IndySystem.lib;IndyProtocols.lib;IndyCore.lib;vclFireDAC.lib;FireDAC.lib;FireDACSqliteDriver.lib;FireDACCommonDriver.lib;FireDACCommon.lib;xmlrtl.lib;dbrtl.lib;vcldb.lib;vclactnband.lib;dsnap.lib;vclribbon.lib;vcltouch.lib</AllPackageLibs>
         <ProjectType>CppVCLApplication</ProjectType>
         <SanitizedProjectName>Fibonacci</SanitizedProjectName>
-        <ILINK_LibraryPath>Thread\;Fi_calc\;Dialogs\;Hera\;$(BDS)\ObjRepos\EN\Cpp\;SMBIOS\;H:\Builider\FibonacciR;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <IncludePath>Thread\;Fi_calc\;Dialogs\;Hera\;$(BDS)\ObjRepos\EN\Cpp\;$(IncludePath)</IncludePath>
+        <ILINK_LibraryPath>Point\;Thread\;Fi_calc\;Dialogs\;Hera\;$(BDS)\ObjRepos\EN\Cpp\;SMBIOS\;H:\Builider\FibonacciR;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <IncludePath>Point\;Thread\;Fi_calc\;Dialogs\;Hera\;$(BDS)\ObjRepos\EN\Cpp\;$(IncludePath)</IncludePath>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <IntermediateOutputDir>.\$(Platform)\$(Config)</IntermediateOutputDir>
@@ -141,13 +141,17 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <DynamicRTL>true</DynamicRTL>
+        <BRCC_DeleteIncludePath>true</BRCC_DeleteIncludePath>
+        <DCC_MinStackSize>4096</DCC_MinStackSize>
+        <BCC_PCHCache>true</BCC_PCHCache>
         <LinkPackageImports>rtl.bpi;vcl.bpi;VclSmp.bpi;vclx.bpi;bcbsmp.bpi;vclimg.bpi;IndySystem.bpi;IndyProtocols.bpi;IndyCore.bpi;vclFireDAC.bpi;FireDAC.bpi;FireDACSqliteDriver.bpi;FireDACCommonDriver.bpi;FireDACCommon.bpi;xmlrtl.bpi;dbrtl.bpi;vcldb.bpi;vclactnband.bpi;dsnap.bpi;vclribbon.bpi;vcltouch.bpi</LinkPackageImports>
         <IncludePath>D:\Builder\FibonacciR\Common;D:\Builder\FibonacciR\Dialogs;$(IncludePath)</IncludePath>
-        <VerInfo_Build>6</VerInfo_Build>
+        <VerInfo_Build>7</VerInfo_Build>
         <UsePackages>true</UsePackages>
         <ILINK_DisableWarnings>false</ILINK_DisableWarnings>
         <ILINK_SelectedWarnings>true</ILINK_SelectedWarnings>
-        <VerInfo_Keys>CompanyName=Hera ;FileDescription=FibonacciR;FileVersion=0.4.0.6;InternalName=Fibo;LegalCopyright=Hera ;LegalTrademarks=PW;OriginalFilename=Fibonacci;ProductName=FibonacciR;ProductVersion=0.0.0.4;Comments=beta </VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Hera ;FileDescription=FibonacciR;FileVersion=0.4.0.7;InternalName=Fibo;LegalCopyright=Hera ;LegalTrademarks=PW;OriginalFilename=Fibonacci;ProductName=FibonacciR;ProductVersion=0.0.0.4;Comments=beta </VerInfo_Keys>
         <VerInfo_MinorVer>4</VerInfo_MinorVer>
         <VerInfo_MajorVer>0</VerInfo_MajorVer>
         <ILINK_LibraryPath>$(BDS)\lib\win32\release\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -170,8 +174,6 @@
         <LinkPackageStatics>rtl.lib;vcl.lib;VclSmp.lib;vclx.lib;bcbsmp.lib;vclimg.lib;IndySystem.lib;IndyProtocols.lib;IndyCore.lib;vclFireDAC.lib;FireDAC.lib;FireDACSqliteDriver.lib;FireDACCommonDriver.lib;FireDACCommon.lib;xmlrtl.lib;dbrtl.lib;vcldb.lib;vclactnband.lib;dsnap.lib;vclribbon.lib;vcltouch.lib</LinkPackageStatics>
         <UsePackages>false</UsePackages>
         <VerInfo_AutoIncVersion>false</VerInfo_AutoIncVersion>
-        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
-        <BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
         <DynamicRTL>false</DynamicRTL>
         <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -253,6 +255,10 @@
         <CppCompile Include="Nieznaczące_polecenia.cpp">
             <DependentOn>Nieznaczące_polecenia.h</DependentOn>
             <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Point\FuncPoint.cpp">
+            <DependentOn>Point\FuncPoint.h</DependentOn>
+            <BuildOrder>27</BuildOrder>
         </CppCompile>
         <CppCompile Include="Point_Form.cpp">
             <Form>WPoint</Form>
@@ -804,12 +810,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>

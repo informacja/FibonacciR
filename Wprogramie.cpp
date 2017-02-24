@@ -223,3 +223,9 @@ void __fastcall TForm3::LabelarcikClick(TObject *Sender)
 // }
 // if(memory != NULL) delete memory;
 //}
+void __fastcall TForm3::FormKeyPress(TObject *Sender, System::WideChar &Key)
+{
+	if(Key == VK_ESCAPE) this->Close();
+}
+//---------------------------------------------------------------------------
+

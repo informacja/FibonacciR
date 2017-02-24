@@ -40,7 +40,7 @@ extern void BringToForeground(DWORD processId);
 		Application->CreateForm(__classid(TFibonacciR), &FibonacciR);
 		Application->CreateForm(__classid(TForm2), &Form2);
 		Application->CreateForm(__classid(TForm3), &Form3);
-		Application->Title = "FibonacciR Free ";
+		Application->Title = "FibonacciR";
 
 		Check_License( );
 

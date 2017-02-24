@@ -390,8 +390,10 @@ __published:	// IDE-managed Components
 	TLabel *Label2;
 	TButton *Button7;
 	TButton *Button8;
-	TButton *Button9;
 	TImageList *ImageListCursors;
+	TButton *ButtonP1;
+	TButton *ButtonP2;
+	TButton *Button9;
 	void __fastcall Zamknij1Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Kopiuj1Click(TObject *Sender);
@@ -571,6 +573,27 @@ __published:	// IDE-managed Components
           int X, int Y);
 	void __fastcall Button8MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall Button9Click(TObject *Sender);
+	void __fastcall ButtonP2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall ButtonP1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall ButtonP2MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall ButtonP2MouseEnter(TObject *Sender);
+	void __fastcall ButtonP2MouseLeave(TObject *Sender);
+	void __fastcall ButtonP2MouseActivate(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y, int HitTest, TMouseActivate &MouseActivate);
+	void __fastcall ButtonP2MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall ButtonP1MouseActivate(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y, int HitTest, TMouseActivate &MouseActivate);
+	void __fastcall ButtonP1MouseEnter(TObject *Sender);
+	void __fastcall ButtonP1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall ButtonP1MouseLeave(TObject *Sender);
+
+
+
+
+
 
 
 
@@ -619,6 +642,8 @@ private:
 	String MPC_HC_Player_path;
 	RECT rect;
 
+	TWPoint *P1;
+	TWPoint *P2;
 
 
 	THsearch *thWatek[ 9 ]; //= { NULL };  	//  wskaŸnik na w¹tki i jego metody
@@ -657,6 +682,8 @@ public:
 	bool reg_save_data;    	 // zezwala na zapis ustawieñ przez program
 
 	vector<pos> point_array; // tablica okienek ze wskaŸnikami [0] to celownik
+
+	void set_main_point_pos( TWPoint *, TForm * ); // ustawia now¹ pozycjê Punktu ( P1 lub P2 )
 
 	__fastcall TMyAss(TComponent* Owner);
 

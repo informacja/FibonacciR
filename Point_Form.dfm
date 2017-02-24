@@ -17,15 +17,19 @@ object WPoint: TWPoint
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  FormStyle = fsStayOnTop
   GlassFrame.SheetOfGlass = True
   OldCreateOrder = False
   Position = poDefault
   PrintScale = poPrintToFit
   ShowHint = True
   StyleElements = []
+  OnClick = FormClick
   OnCreate = FormCreate
   OnDblClick = FormDblClick
+  OnMouseActivate = FormMouseActivate
+  OnMouseEnter = FormMouseEnter
+  OnMouseLeave = FormMouseLeave
+  OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage

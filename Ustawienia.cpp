@@ -774,7 +774,7 @@ void TForm2::AdvancedMode(bool b ) {
 	if ( b )
 		FibonacciR->Caption = "FibonacciR " + ::GetFileVersion( ParamStr(0));
 	else
-		FibonacciR->Caption =  "FibonacciR Free " + ::GetFileVersion( ParamStr(0));
+		FibonacciR->Caption =  "FibonacciR " + ::GetFileVersion( ParamStr(0));
 
 }
 //---------------------------------------------------------------------------
@@ -1328,19 +1328,38 @@ void __fastcall TForm2::ComboBox1KeyDown(TObject *Sender, WORD &Key, TShiftState
 }
 //---------------------------------------------------------------------------
 
-
 void __fastcall TForm2::Button5Click(TObject *Sender)
 {
-
 CreateShortcutLink("opis", GetSpecialFolder(CSIDL_DESKTOP)+"\\ mylinknn.lnk", "%windir%\\system32\\ncpa.cpl", ""  );
 ShellExecuteA(0, "open", ((AnsiString) GetSpecialFolder(CSIDL_DESKTOP)+"\\ mylinknn.lnk").c_str() , 0,0,1);
 FibonacciR->StatusInfo("Utworzono skrót na pulpicie do folderu po³¹czeñ sieciowych");
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm2::MaskEditKodClick(TObject *Sender)
+{
+	FibonacciR->StatusInfo( (int)this->KeyPreview);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::FormKeyPress(TObject *Sender, System::WideChar &Key)
+{
+	if(Key == VK_ESCAPE) this->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::ButtonCloseClick(TObject *Sender)
+{
+	this->Close();
+}
+//---------------------------------------------------------------------------
 
 
 
+void __fastcall TForm2::ButtonCloseKeyPress(TObject *Sender, System::WideChar &Key)
 
-
+{
+	if(Key == VK_ESCAPE) this->Close();
+}
+//---------------------------------------------------------------------------
 

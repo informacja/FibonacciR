@@ -158,6 +158,7 @@ __published:	// IDE-managed Components
 	TCheckBox *CheckBoxLegendInFile;
 	TImage *ImagePreview;
 	TButton *Button5;
+	TButton *ButtonClose;
 	void __fastcall TrackBar1Change(TObject *Sender);
 	void __fastcall CheckBox2Click(TObject *Sender);
 	void __fastcall CheckBox3Click(TObject *Sender);
@@ -250,6 +251,10 @@ __published:	// IDE-managed Components
 	void __fastcall CheckBoxLegendInFileClick(TObject *Sender);
 	void __fastcall ComboBox1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall Button5Click(TObject *Sender);
+	void __fastcall MaskEditKodClick(TObject *Sender);
+	void __fastcall FormKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall ButtonCloseClick(TObject *Sender);
+	void __fastcall ButtonCloseKeyPress(TObject *Sender, System::WideChar &Key);
 
 
 
