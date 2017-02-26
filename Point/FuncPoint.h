@@ -33,7 +33,7 @@ double Length( Punkt a, Punkt b );
 class Linear_Func
 {
 public:
-    double A, B, X, Y, Anormal, Bnormal;
+	double A, B, X, Y, Anormal, Bnormal;
 	Punkt S, srodek;
     /// do wzoru Y = A*X + B;
     void check_errors( );
@@ -50,6 +50,8 @@ public:
 
     Linear_Func( Punkt a, Punkt b );
 };
+
+//---------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------
 #endif

@@ -10,6 +10,7 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.Imaging.GIFImg.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
+#include <Vcl.Graphics.hpp>
 
 class TFibonacciR;
 class TFormMain;        // todel
@@ -51,7 +52,6 @@ public:		// User declarations
 
 struct pos
 {
-
 	int x ;
 	int y ;
 

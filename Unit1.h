@@ -681,7 +681,7 @@ public:
 
 	bool reg_save_data;    	 // zezwala na zapis ustawieñ przez program
 
-	vector<pos> point_array; // tablica okienek ze wskaŸnikami [0] to celownik
+	vector<TWPoint*> point_array; // tablica okienek ze wskaŸnikami [0] to celownik
 
 	void set_main_point_pos( TWPoint *, TForm * ); // ustawia now¹ pozycjê Punktu ( P1 lub P2 )
 

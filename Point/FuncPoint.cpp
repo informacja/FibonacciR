@@ -63,22 +63,30 @@ double Length( Punkt p1, Punkt p2 )
 // ---------------------------------------------------------------------------
 
 
-/*
-double MIN( double a, double b)
+double Min( double a, double b)
 {
     return (((a)<(b)) ? a : b);
 }
-*/
+
 // ------------------------------------------------------
 
 Linear_Func::Linear_Func( Punkt a, Punkt b )
 {
-    A = Minus( a.Y, b.Y ) / Minus( a.X, b.X );
+	if ( a.X != b.X )   {
+		if ( a.Y != b.Y )
+		{
+			A = Minus( a.Y, b.Y ) / Minus( a.X, b.X );
+		}
+	}
+	else
+	{
+		A = 0;
+	}
 
     B = - ( (A * a.X) - a.Y );
     // środek
-    S.X = (Minus( a.X, b.X ) / 2.0) + MIN( a.X, b.X );
-    S.Y = (Minus( a.Y, b.Y ) / 2.0) + MIN( a.Y, b.Y );
+	S.X = (Minus( a.X, b.X ) / 2.0) + Min( a.X, b.X );
+	S.Y = (Minus( a.Y, b.Y ) / 2.0) + Min( a.Y, b.Y );
 
   //  setIntensity();
  //   cout << S.X <<endl <<S.Y<<endl;
@@ -86,8 +94,11 @@ Linear_Func::Linear_Func( Punkt a, Punkt b )
     /// wyznaczanie prostej prostopadłej
     //  (z ang.) normal = prostopadła
 
-    // wyznaczanie współczynnika kierunkowego dla funkcji prostopadłej
-    Anormal = -1 / A;
+	// wyznaczanie współczynnika kierunkowego dla funkcji prostopadłej
+	if ( A != 0 )
+		Anormal = -1 / A;
+	else
+		Anormal = 0;
 //    black(Anormal);
 
     // obliczanie wyrazu wolnego, funkcji prostopadłej, tak by przechodziła przez punkt S( pomiędzy punktami A i B )

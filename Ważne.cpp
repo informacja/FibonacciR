@@ -571,31 +571,32 @@ String GetPath_with_access(String * s, int permission, String DefaultPath ) {
 }
 
 // ---------------------------------------------------------------------------
-	void Set_me_null_BEFORE_KILL( HWND h )
-	{
-		for ( int i = 0; i < FibonacciR->point_array.size(); i++) {
-			if( h == FibonacciR->point_array[i].handle->Handle )
-				if ( FibonacciR->point_array[i].handle->Handle != NULL ) {
-					 DeleteOrRelease(FibonacciR->point_array[i].handle);
-					 FibonacciR->point_array[i].handle = NULL;
-				}
-		}
-
+void Set_me_null_BEFORE_KILL( HWND h )
+{
+	for ( int i = 0; i < FibonacciR->point_array.size(); i++) {
+		if( h == FibonacciR->point_array[i]->Handle )
+			if ( FibonacciR->point_array[i]->Handle != NULL ) {
+				 DeleteOrRelease(FibonacciR->point_array[i]);
+				 FibonacciR->point_array[i] = NULL;
+			}
 	}
+
+}
 //---------------------------------------------------------------------------
-bool Close_Points_WND()
+bool Close_Points_WND()        // TO DO DONT WORK
 {
 	bool good = false;
 
 	for ( int i = FibonacciR->point_array.size(); i > 0; i--) {
-	if ( NULL != FibonacciR->point_array[i].handle )
-		if ( IsWindow (FibonacciR->point_array[i].handle->Handle) )
-			if ( FibonacciR->point_array[i].handle->Handle != NULL ) {
-				DeleteOrRelease(FibonacciR->point_array[i].handle);
+	if ( NULL != FibonacciR->point_array[i]->Handle )
+		if ( IsWindow (FibonacciR->point_array[i]->Handle) )
+			if ( FibonacciR->point_array[i]->Handle != NULL ) {
+                FibonacciR->point_array[i]->Destroying();
+				DeleteOrRelease(FibonacciR->point_array[i]);
 			}
 	}
 
-    FibonacciR->point_array.resize(0);
+	FibonacciR->point_array.resize(0);
 	good = true;
 
 	return good;

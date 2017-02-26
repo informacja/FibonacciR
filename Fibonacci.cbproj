@@ -186,47 +186,47 @@
     <ItemGroup>
         <CppCompile Include="Akcje.cpp">
             <DependentOn>Akcje.h</DependentOn>
-            <BuildOrder>10</BuildOrder>
+            <BuildOrder>9</BuildOrder>
         </CppCompile>
         <CppCompile Include="Dialogs\ClosePsDlg.cpp">
             <Form>ClosePS</Form>
             <FormType>dfm</FormType>
             <DependentOn>Dialogs\ClosePsDlg.h</DependentOn>
-            <BuildOrder>18</BuildOrder>
+            <BuildOrder>17</BuildOrder>
         </CppCompile>
         <CppCompile Include="Dialogs\DialogScan.cpp">
             <Form>SearchPref</Form>
             <FormType>dfm</FormType>
             <DependentOn>Dialogs\DialogScan.h</DependentOn>
-            <BuildOrder>24</BuildOrder>
+            <BuildOrder>22</BuildOrder>
         </CppCompile>
         <CppCompile Include="Dialogs\PropertiesDlg.cpp">
             <Form>PropetisDlg</Form>
             <FormType>dfm</FormType>
             <DependentOn>Dialogs\PropertiesDlg.h</DependentOn>
-            <BuildOrder>3</BuildOrder>
+            <BuildOrder>4</BuildOrder>
         </CppCompile>
         <CppCompile Include="Enum.cpp">
             <DependentOn>Enum.h</DependentOn>
             <BuildOrder>12</BuildOrder>
         </CppCompile>
         <CppCompile Include="Fibonacci.cpp">
-            <BuildOrder>1</BuildOrder>
+            <BuildOrder>0</BuildOrder>
         </CppCompile>
         <PCHCompile Include="FibonacciPCH1.h">
             <BuildOrder>1</BuildOrder>
         </PCHCompile>
         <CppCompile Include="Fi_calc\floating.cpp">
             <DependentOn>Fi_calc\floating.h</DependentOn>
-            <BuildOrder>0</BuildOrder>
+            <BuildOrder>13</BuildOrder>
         </CppCompile>
         <CppCompile Include="Fi_calc\integrity.cpp">
             <DependentOn>Fi_calc\integrity.h</DependentOn>
-            <BuildOrder>13</BuildOrder>
+            <BuildOrder>14</BuildOrder>
         </CppCompile>
         <CppCompile Include="Hera\from_internet.cpp">
             <DependentOn>Hera\from_internet.h</DependentOn>
-            <BuildOrder>19</BuildOrder>
+            <BuildOrder>18</BuildOrder>
         </CppCompile>
         <CppCompile Include="Hera\Func.cpp">
             <DependentOn>Hera\Func.h</DependentOn>
@@ -234,7 +234,7 @@
         </CppCompile>
         <CppCompile Include="Hera\Generic.cpp">
             <DependentOn>Hera\Generic.h</DependentOn>
-            <BuildOrder>14</BuildOrder>
+            <BuildOrder>15</BuildOrder>
         </CppCompile>
         <CppCompile Include="Hera\Picture.cpp">
             <DependentOn>Hera\Picture.h</DependentOn>
@@ -242,11 +242,11 @@
         </CppCompile>
         <CppCompile Include="Hera\Singleton.cpp">
             <DependentOn>Hera\Singleton.h</DependentOn>
-            <BuildOrder>15</BuildOrder>
+            <BuildOrder>10</BuildOrder>
         </CppCompile>
         <CppCompile Include="Hera\Times.cpp">
             <DependentOn>Hera\Times.h</DependentOn>
-            <BuildOrder>17</BuildOrder>
+            <BuildOrder>16</BuildOrder>
         </CppCompile>
         <ResourceCompile Include="Messages.rc">
             <Form>Messages.res</Form>
@@ -258,13 +258,13 @@
         </CppCompile>
         <CppCompile Include="Point\FuncPoint.cpp">
             <DependentOn>Point\FuncPoint.h</DependentOn>
-            <BuildOrder>27</BuildOrder>
+            <BuildOrder>24</BuildOrder>
         </CppCompile>
         <CppCompile Include="Point_Form.cpp">
             <Form>WPoint</Form>
             <FormType>dfm</FormType>
             <DependentOn>Point_Form.h</DependentOn>
-            <BuildOrder>25</BuildOrder>
+            <BuildOrder>23</BuildOrder>
         </CppCompile>
         <CppCompile Include="SplashR.cpp">
             <Form>Splash</Form>
@@ -274,31 +274,31 @@
         </CppCompile>
         <CppCompile Include="Thread\TGdiPlus.cpp">
             <DependentOn>Thread\TGdiPlus.h</DependentOn>
-            <BuildOrder>24</BuildOrder>
+            <BuildOrder>21</BuildOrder>
         </CppCompile>
         <CppCompile Include="Thread\Thread.cpp">
             <DependentOn>Thread\Thread.h</DependentOn>
-            <BuildOrder>20</BuildOrder>
+            <BuildOrder>19</BuildOrder>
         </CppCompile>
         <CppCompile Include="Thread\Validation.cpp">
             <DependentOn>Thread\Validation.h</DependentOn>
-            <BuildOrder>21</BuildOrder>
+            <BuildOrder>20</BuildOrder>
         </CppCompile>
         <CppCompile Include="Unit1.cpp">
             <Form>FibonacciR</Form>
             <FormType>dfm</FormType>
             <DependentOn>Unit1.h</DependentOn>
-            <BuildOrder>2</BuildOrder>
+            <BuildOrder>1</BuildOrder>
         </CppCompile>
         <CppCompile Include="Ustawienia.cpp">
             <Form>Form2</Form>
             <FormType>dfm</FormType>
             <DependentOn>Ustawienia.h</DependentOn>
-            <BuildOrder>4</BuildOrder>
+            <BuildOrder>2</BuildOrder>
         </CppCompile>
         <CppCompile Include="Ważne.cpp">
             <DependentOn>Ważne.h</DependentOn>
-            <BuildOrder>9</BuildOrder>
+            <BuildOrder>3</BuildOrder>
         </CppCompile>
         <CppCompile Include="Wprogramie.cpp">
             <Form>Form3</Form>
