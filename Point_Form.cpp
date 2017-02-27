@@ -16,8 +16,8 @@ __fastcall TWPoint::TWPoint(TComponent* Owner)
 	: TForm(Owner)
 //	mFormMain(dynamic_cast<TFibonacciR *>(Owner))
 {
-	  mFormMain = (TFibonacciR*) Owner;
-	assert(mFormMain!=0); //Assume cast succeeded
+//	  mFormMain = (TFibonacciR*) Owner;
+	//assert(mFormMain!=0); //Assume cast succeeded
 
 	move = false;
 }
@@ -39,15 +39,14 @@ void __fastcall TWPoint::Image1DblClick(TObject *Sender)
 void __fastcall TWPoint::Image1MouseMove(TObject *Sender, TShiftState Shift, int X,
 		  int Y)
 {
-//	static int a;
-
     POINT p;
 	if (GetCursorPos(&p))
 	{
 		if (move)
 		//if ( X>1000 )
 		{
-			LogSave(p.x);
+			pozX = p.x;
+			pozY = p.y;
 			Move_WND( this->Handle, p.x, p.y );
 		}
 	}
@@ -58,8 +57,8 @@ void __fastcall TWPoint::Image1MouseDown(TObject *Sender, TMouseButton Button, T
           int X, int Y)
 {
 	  move = true;
-	  pozX = X;
-	  pozY = Y;
+//	  pozX = X;
+//	  pozY = Y;
 }
 //---------------------------------------------------------------------------
 
@@ -85,32 +84,9 @@ void __fastcall TWPoint::FormCreate(TObject *Sender)
 //---------------------------------------------------------------------------
 
 
-void __fastcall TWPoint::FormMouseActivate(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y, int HitTest, TMouseActivate &MouseActivate)
-{
-	PixelsPerInch *= 2;
-}
-//---------------------------------------------------------------------------
 
-void __fastcall TWPoint::FormMouseLeave(TObject *Sender)
-{
- 	PixelsPerInch = 96;
-}
-//---------------------------------------------------------------------------
 
-void __fastcall TWPoint::FormMouseEnter(TObject *Sender)
-{
-    PixelsPerInch *= 2;
-}
-//---------------------------------------------------------------------------
 
-void __fastcall TWPoint::FormClick(TObject *Sender)
-{
-	PixelsPerInch = 50;
-	this->Update();
-	this->Repaint();
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TWPoint::FormPaint(TObject *Sender)
 {
@@ -118,9 +94,22 @@ void __fastcall TWPoint::FormPaint(TObject *Sender)
 	{
 		pozX = Rect.left;
 		pozY = Rect.top;
-		LogSave(pozY);
+
+		LogSave( Rect.top );  		LogSave( Rect.bottom  );
+		LogSave( Rect.right );
+
+		LogSave( Rect.left );
+		LogSave( "\n" );
 	}
 	else ShowError( "B³¹d pobrania rozmiau okna in TWPoint::FormPaint", NULL, Sender );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TWPoint::Image1Click(TObject *Sender)
+{
+   PixelsPerInch = 200;
+   this->Update();
+   this->Repaint();
 }
 //---------------------------------------------------------------------------
 

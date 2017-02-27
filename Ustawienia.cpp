@@ -14,7 +14,7 @@ TForm2 *Form2;
 __fastcall TForm2::TForm2(TComponent* Owner)
 	: TForm(Owner) {
 
- CTrayIcon1->Visible=false;                                              //wykluczenie zapomienia (b³¹d komunikatów)
+ TrayIcon1->Visible=false;                                              //wykluczenie zapomienia (b³¹d komunikatów)
  RadioButton11->Enabled=false;
  RadioButton10->Enabled=false;
  ButtonWybierz->Enabled=false;
@@ -103,16 +103,17 @@ void __fastcall TForm2::CheckBox3Click(TObject *Sender)
 //CheckBox3 domyœlnie musi byæ wy³¹czony inaczej pojawi œiê komunikat
 
  if (CheckBox3->Checked) {
-		CTrayIcon1->Visible = true;
+		TrayIcon1->Visible = true;
+		TrayIcon1->BalloonHint = "Ikona programu jest dostêpna poni¿ej";
+		TrayIcon1->ShowBalloonHint();
 		FibonacciR->CloseSet(1);
 		MutexQuietMod = CreateMutexA(NULL, TRUE, "FI_QUIET_MODE");                       // show ballonhint w trayu
  }	else {
-		CTrayIcon1->Visible = false;
-		CTrayIcon1->Hide = true;
+		TrayIcon1->Visible = false;
 		FibonacciR->CloseSet();
 		ReleaseMutex(MutexQuietMod);
-
  }
+
 }
 // ---------------------------------------------------------------------------
 
@@ -1354,12 +1355,17 @@ void __fastcall TForm2::ButtonCloseClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-
-
 void __fastcall TForm2::ButtonCloseKeyPress(TObject *Sender, System::WideChar &Key)
 
 {
 	if(Key == VK_ESCAPE) this->Close();
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TForm2::TrayIcon1Click(TObject *Sender)
+{
+	Application->BringToFront();
 }
 //---------------------------------------------------------------------------
 

@@ -198,11 +198,27 @@ void __fastcall TFibonacciR::OnDropFiles(TMessage &Msg) {
 	 Df(Msg);
    }
 //---------------------------------------------------------------------------
-
+ void __fastcall TFibonacciR::DoShowHint(UnicodeString &HintStr, bool &CanShow, THintInfo &HintInfo)
+{
+  if (HintInfo.HintControl == StatusBar1)
+  {
+    HintInfo.HintColor = clAqua;// Changes only for this hint
+    HintInfo.HintMaxWidth = 120; // Hint text word wraps if width is greater than 120
+//	HintInfo.HintPos.x += Button9->Width; // Move hint to right edge
+//	  if (HintInfo.HintControl == Button10)
+	HintInfo.HideTimeout = 30000;
+//	Application->HintHidePause = 30000;
+  }
+//	  StatusBar1->Panels->Items[0]->Text =  *HintStr;
+  StatusBar1->Panels->Items[1]->Text =
+		GetLongHint(Application->Hint);
+}
 
 void __fastcall TFibonacciR::FormCreate(TObject *Sender) {
 
 try {
+	Application->ShowHint = true;
+//	Application->OnShowHint = DoShowHint;
 
 	if(!ParamStr(1).IsEmpty())	Memo1->Lines->LoadFromFile(ParamStr(1));        // œcie¿ka, parametr programu
 
@@ -228,7 +244,6 @@ try {
 	  if (Reg->ValueExists("Top"))		Top    = Reg->ReadInteger("Top");
 	  if (Reg->ValueExists("Width"))	Width  = Reg->ReadInteger("Width");
 	  if (Reg->ValueExists("Height"))	Height = Reg->ReadInteger("Height");
-
    }
 
    Reg->CloseKey();
@@ -240,9 +255,6 @@ try {
 		Odtwarzacz1->Hint 	 = MPC_HC_Player_path;
 		Odtwarzacz1->Visible = true;											// domyœlnie nie widzialny
 	}
-
-
-
 
    } catch (...) {
    ShowError("B³¹d FormCreate() przy próbie pobrania wartoœci z rejestru");
@@ -587,11 +599,11 @@ bool Close_Points_WND()        // TO DO DONT WORK
 {
 	bool good = false;
 
-	for ( int i = FibonacciR->point_array.size(); i > 0; i--) {
-	if ( NULL != FibonacciR->point_array[i]->Handle )
+	for ( int i = FibonacciR->point_array.size() - 1 ; i > 0; i--) {
+	if ( NULL != FibonacciR->point_array[i] )
 		if ( IsWindow (FibonacciR->point_array[i]->Handle) )
 			if ( FibonacciR->point_array[i]->Handle != NULL ) {
-                FibonacciR->point_array[i]->Destroying();
+				FibonacciR->point_array[i]->Destroying();
 				DeleteOrRelease(FibonacciR->point_array[i]);
 			}
 	}

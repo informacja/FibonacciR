@@ -29,12 +29,8 @@ __published:	// IDE-managed Components
 	void __fastcall Image1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall FormCreate(TObject *Sender);
-	void __fastcall FormMouseActivate(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y, int HitTest, TMouseActivate &MouseActivate);
-	void __fastcall FormMouseLeave(TObject *Sender);
-	void __fastcall FormMouseEnter(TObject *Sender);
-	void __fastcall FormClick(TObject *Sender);
 	void __fastcall FormPaint(TObject *Sender);
+	void __fastcall Image1Click(TObject *Sender);
 
 
 private:	// User declarations
@@ -45,7 +41,7 @@ private:	// User declarations
 	//TForm * const mFormMain;// todel
 
 public:		// User declarations
-	int pozX, pozY;
+	volatile 	int pozX, pozY;
 	__fastcall TWPoint(TComponent* Owner);
 };
 //---------------------------------------------------------------------------

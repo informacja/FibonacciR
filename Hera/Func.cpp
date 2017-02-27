@@ -847,10 +847,6 @@ S::T.Continue();
 */
 
 
-
-
-
-
 unsigned FindStream(TListView *list, String *Path, unsigned *n) {
 
 // HANDLE DLLHandle = LoadLibraryA("kernel32.dll"); // Nale¿y podaæ œcie¿kê dostêpu do biblioteki, mo¿e byæ wzglêdna lub bezwzglêdna, nie musi znajdowaæ siê w tym samym katalogu co program
@@ -860,7 +856,7 @@ unsigned FindStream(TListView *list, String *Path, unsigned *n) {
 // {
 //   // Deklaracja wskaŸnika do funkcji.
 //  /*
-//   1. Jeœli funkcja, któr¹ wywo³ujemy jest typu woid, czyli nie zwraca ¿adnej wartoœci, jak w przyk³adzie
+//   1. Jeœli funkcja, któr¹ wywo³ujemy jest typu void, czyli nie zwraca ¿adnej wartoœci, jak w przyk³adzie
 //   void About(AnsiString pName) to deklaracjê wskaŸnika do tej funkcji poprzedzamy tylko s³owem typedef,
 //   jeœli jest to funkcja zwracaj¹ca np. wartoœæ typu int to równie¿ wystarczy tylko typedef, jeœli jednak
 //   mamy tak¹ funkcjê AnsiString AddFile()to po s³owie typedef nale¿y podaæ typ zwracanej przez funkcjê
@@ -930,7 +926,7 @@ unsigned FindStream(TListView *list, String *Path, unsigned *n) {
 
 			if ( *n == S::BREAK_SEARCH) {                              // zapytanie czy szukaæ nadal (wartoœæ)
 
-          		QuestSearchMoreThan( list, (String*)(stream.cStreamName),(int*) n );
+				QuestSearchMoreThan( list, (String*)(stream.cStreamName),(int*) *n );
 //				S::T.Pause();
 //				list->Visible = true;
 //				S::Status("Ostatni plik: " + *Path + " (" + *n + ")");

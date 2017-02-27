@@ -21,9 +21,43 @@ char g_PrvChar;
 extern long long size_files; // Button SzukajOnClick()
 
 //TRegistryIniFile  TClientWinSocket
-
+//
+//typedef struct{
+//
+// unsigned long     cbStruct;
+// PWChar     pszTitle;
+// PWChar     pszText;
+// int         ttiIcon;
+//   } tagEDITBALLOONTIP;
+//  tagEDITBALLOONTIP *EDITHINT;
+//
+// void __fastcall ShowBalloonTip(TWinControl *Control,int  Icon,char *Title,wchar_t *Text,TColor BackCL,TColor TextCL)
+//{
+//	HWND hWndTip;
+//	TOOLINFO ti;
+//	HWND hWnd;
+//
+//	hWnd    = Control->Handle;
+//	hWndTip = CreateWindow(TOOLTIPS_CLASS, NULL, WS_POPUP | TTS_NOPREFIX | TTS_BALLOON | TTS_ALWAYSTIP, 0, 0, 0, 0, hWnd, 0, HInstance, NULL);
+//	if( hWndTip )
+//	{
+//		SetWindowPos(hWndTip, HWND_TOPMOST, 0, 0, 0, 0,
+//		  SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE);
+//		ti.cbSize = sizeof(ti);
+//		ti.uFlags = TTF_CENTERTIP | TTF_TRANSPARENT | TTF_SUBCLASS;
+//		ti.hwnd = hWnd;
+//		ti.lpszText = Text;
+//		GetClientRect(hWnd, &ti.rect);
+//		SendMessage(hWndTip, TTM_SETTIPBKCOLOR, BackCL, 0);
+//		SendMessage(hWndTip, TTM_SETTIPTEXTCOLOR, TextCL, 0);
+//		SendMessage(hWndTip, TTM_ADDTOOL, 1, Integer(&ti));
+//		SendMessage(hWndTip, TTM_SETTITLE, Icon % 4, Integer(Title));
+//	}
+//}
 //---------------------------------------------------------------------------
 __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
+
+   //	ShowBalloonTip( Button9, 1, "ik1",L"Zobacz punkty", 0,0 );
 
 //unique_ptr<TProgressBar> ProgressBar1(new TProgressBar(StatusBar1));   //shared_ptr
  ProgressBar1 = new TProgressBar(StatusBar1);
@@ -35,6 +69,7 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
  ProgressBar1->SmoothReverse = true;                                            // bufor (poprawia p³ynnoœæ)
  ProgressBar1->DoubleBuffered = true;
  ProgressBar1->Visible = True;
+// StatusBar1->OnHint = ;
 
  ImageSave = new TImage(StatusBar1); 											// ikonka zapisu
  ImageSave->Parent = StatusBar1;
@@ -135,6 +170,9 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
 	S::ptr = this->StatusBar1;
 	S::ptr->SetParentComponent( FibonacciR );
 
+	Xmax = GetSystemMetrics( SM_CXVIRTUALSCREEN);
+	Ymax = GetSystemMetrics( SM_CYVIRTUALSCREEN);
+
 
 	CSpinButton1->Ctl3D = false;       											// nie dzia³a inaczej
 	CSpinButton2->Ctl3D = false;
@@ -146,13 +184,16 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
 
 #ifdef FINAL
 
-	TabSheet1->TabVisible = false;
-	TabSheet5->TabVisible = false;
+//	TabSheet1->TabVisible = false;
+//	TabSheet5->TabVisible = false;
+	TabSheetInne->TabVisible = false;
+	CheckBoxClearP->Visible = false;
+	ButtonRandom->Visible = false;
 
 //	TabSheet2->TabVisible = false;
 //	TabSheet6->TabVisible = false;
 
-	PageControl2->ActivePageIndex = 0;
+	PageControl2->ActivePageIndex = 1;
 	Zawszenawierzchu1->Enabled = false;
 	this->Caption = "FibonacciR Free " + ::GetFileVersion( ParamStr(0) );
 	GroupBox5->Visible = false;
@@ -3304,55 +3345,23 @@ void __fastcall TFibonacciR::EditFileMangerChange(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFibonacciR::Button8Click(TObject *Sender)
-{
-	  //	f3 = new TWPoint(this);
-	 //	f3 -> Show();
+void __fastcall TFibonacciR::ButtonRandomClick(TObject *Sender)
+{    // MOUSE UP siê nie wykonuje
 
-		int x, y, Xmax, Ymax;
+//		GetWindowRect(this->Handle, &rect);
+//		SetWindowPos( this->Handle,(HWND__ *) 0,-1920, -1920, 0, 0, 0 );
 
-		Xmax = GetSystemMetrics( SM_CXVIRTUALSCREEN);
-		Ymax = GetSystemMetrics( SM_CYVIRTUALSCREEN);
-
-
-		x = rand() % Xmax - 16;
-		y = rand() % Ymax - 16;
-	   //	GetWindowDC(f3->Handle);
-
-	  //	SetWindowPos( f3->Handle,(HWND__ *) HWND_NOTOPMOST,x, y, 50, 340,WS_OVERLAPPED );
-			 // MoveWindow( f3->Handle,x,y,0,0,true);
-}
-//---------------------------------------------------------------------------
-	bool allow = false;
-
-
-void __fastcall TFibonacciR::Button8MouseDown(TObject *Sender, TMouseButton Button,
-		  TShiftState Shift, int X, int Y)
-{
-
-		GetWindowRect(this->Handle, &rect);
-		SetWindowPos( this->Handle,(HWND__ *) 0,-1920, -1920, 0, 0, 0 );
-
-		Close_Points_WND();
-
-		point_array.clear();
-		//point_array[0].handle = new TWPoint(this);
-
-//	   const TWPoint *t1 = new TWPoint(this);
+		if ( CheckBoxClearP->Checked )
+			Close_Points_WND();
 
 		for ( int i = 0; i < 10; i++) {
-
-//	   		point_array.push_back( *t1 );                                       // error
 
 			point_array.push_back( new TWPoint(this) );
 
 			point_array[point_array.size()-1]->Show();
 
-			int x, y, Xmax, Ymax;
+			int x, y;
 
-			Xmax = GetSystemMetrics( SM_CXVIRTUALSCREEN);
-			Ymax = GetSystemMetrics( SM_CYVIRTUALSCREEN);
-				 
 			x = rand() % Xmax - 16;
 			y = rand() % Ymax - 16;
 
@@ -3361,27 +3370,21 @@ void __fastcall TFibonacciR::Button8MouseDown(TObject *Sender, TMouseButton Butt
 
 		}
 
-		allow = true;
-//		 //	point_array[0].handle->Image1->Picture->Graphic->
-//MOUSE UP siê nie wykonuje
-	SetWindowPos( this->Handle,(HWND__ *) 0, rect.left, rect.top, rect.right-rect.left, rect.bottom-rect.top, 0 );
+//	SetWindowPos( this->Handle,(HWND__ *) 0, rect.left, rect.top, rect.right-rect.left, rect.bottom-rect.top, 0 );
+
+	   //	GetWindowDC(f3->Handle);
+	  //	SetWindowPos( f3->Handle,(HWND__ *) HWND_NOTOPMOST,x, y, 50, 340,WS_OVERLAPPED );
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFibonacciR::Button8MouseUp(TObject *Sender, TMouseButton Button,
+
+void __fastcall TFibonacciR::ButtonRandomMouseUp(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-	 SetWindowPos( this->Handle,(HWND__ *) 0, rect.left, rect.top, rect.right-rect.left, rect.bottom-rect.top, 0 );
+//	 SetWindowPos( this->Handle,(HWND__ *) 0, rect.left, rect.top, rect.right-rect.left, rect.bottom-rect.top, 0 );
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFibonacciR::Button8MouseMove(TObject *Sender, TShiftState Shift,
-          int X, int Y)
-{
-	if( allow )
-	 Move_WND(point_array[0]->Handle, X, Y );				/// error
-}
-//---------------------------------------------------------------------------
 
 // TO DO usuwanie wskaŸników na formatke (handle = null) po 2klikniêciu
 
@@ -3390,28 +3393,20 @@ void __fastcall TFibonacciR::Button8MouseMove(TObject *Sender, TShiftState Shift
 #define MAX( a, b ) (((a)>(b)) ? a : b)
 
 
-void __fastcall TFibonacciR::Button9Click(TObject *Sender)
+void __fastcall TFibonacciR::ButtonLinFuncClick(TObject *Sender)
 {
+	CheckListPoints->Enabled = true;
 
-	vector<Punkt> tab(3);
-//  tab[1] = {  2, -5 };
-//	tab[2] = { -6,  5 };
-	Punkt tab1( P1->pozX, P1->pozY );
-	Punkt tab2( P2->pozX, P2->pozY );
-//	Punkt tab1( MIN(P1->pozX, P2->pozX), MIN(P1->pozY, P2->pozY));
-//	Punkt tab2( MAX(P1->pozX, P2->pozX), MAX(P1->pozY, P2->pozY));
+    int x, y;
+//	vector<Punkt> tab (2);//	tab.resize(2);//	Punkt tab1( MIN(P1->pozX, P2->pozX), MIN(P1->pozY, P2->pozY));//	Punkt tab2( MAX(P1->pozX, P2->pozX), MAX(P1->pozY, P2->pozY));
 //	Punkt tab3(600, 600);
 
+	Punkt tab1( P1->pozX, P1->pozY );
+	Punkt tab2( P2->pozX, P2->pozY );
+	Linear_Func a( tab1, tab2 );    // wyznaczam wzory funkcji
 
-	Linear_Func a(tab1, tab2);// = {  tab[0], tab[1] };    // wyznaczam wzory funkcji
 //	Linear_Func b(tab2, tab3);// = {  tab[1], tab[2] };
-
-	int odl = ( P1->pozX < P2->pozX )? P2->pozX - P1->pozX : P1->pozX - P2->pozX;
-	odl /= 10;
-
-	for ( int i = 0; i < 10; i++) {
-
-//Punkt S;
+//	Punkt S;
 //
 //	S.X = (-b.Bnormal - a.Bnormal) / ( -b.Anormal - a.Anormal);
 //	// S.Y = ((a.Anormal - b.Anormal) * S.X) - (a.Bnormal - b.Bnormal)/2;    /// so close
@@ -3419,19 +3414,19 @@ void __fastcall TFibonacciR::Button9Click(TObject *Sender)
 
 //	Length(S, point)
 
+	int odl = ( P1->pozX < P2->pozX )? P2->pozX - P1->pozX : P1->pozX - P2->pozX;
+	odl /= 10;
+
+	for ( int i = 0; i < 10; i++) {
+
+
 		TWPoint  *	f3;
 		f3 = new TWPoint(this);
-
-//		 int h; h++;
-	//
 	//	ImageListCursors->GetIcon( h % ImageListCursors->Count, f3->Image1->Picture->Icon );                           // ikona powodzenia
 
-		int x, y, Xmax, Ymax;
+
 		int directionX = ( P1->pozX < P2->pozX )? 1 : -1;	// kierunek  prawo lewo
 //		int directionY = ( P1->pozY < P2->pozY )? 1 : -1;    // kierunek  góra dól
-
-		Xmax = GetSystemMetrics( SM_CXVIRTUALSCREEN);
-		Ymax = GetSystemMetrics( SM_CYVIRTUALSCREEN);
 
 		x = P1->pozX + ( ((odl * i+2) + odl/2) * directionX ) + 16 % Xmax - 16;
 		y = ((int)a.CalcFor( x ) % Ymax);
@@ -3444,12 +3439,45 @@ void __fastcall TFibonacciR::Button9Click(TObject *Sender)
             y -= 2* Minus( P1->pozY, y );
 		}
 
-	//			y = rand() % Ymax - 16;
-
-	   Move_WND( f3 ->  Handle,x,y );
-		f3 -> Show();
-//			Sleep(1);
+		Move_WND( f3->Handle, x, y );
+//		f3 -> Show();
 	}
+///////////////////////////////////////////////		DrawNormalPoints();  on a line
+
+	const int fiX = FI * Minus( P1->pozX, P2->pozX );
+
+	for ( int i = 0; i < 4; i++)
+	{
+		point_array.push_back( new TWPoint(this) );
+		point_array[point_array.size()-1]->Show();
+	}
+
+	if ( ! point_array.size() > 0) 	return;
+
+	x = fiX - P1->pozX;
+	y = (int)a.CalcFor( x ) % Ymax;
+	Move_WND( point_array[point_array.size()-4]->Handle,x,y);
+
+//	x = fiX + P1->pozX;
+//	y = (int)a.CalcFor( x ) % Ymax;
+//	Move_WND( point_array[point_array.size()-3]->Handle,x,y);
+
+//	x = fiX - P2->pozX;
+//	y = (int)a.CalcFor( x ) % Ymax;
+//	Move_WND( point_array[point_array.size()-2]->Handle,x,y);
+//
+//	x = fiX + P2->pozX;
+//	y = (int)a.CalcFor( x ) % Ymax;
+//	Move_WND( point_array[point_array.size()-1]->Handle,x,y);
+
+	StatusInfo( fiX );
+
+//	point_array[point_array.size()-1]
+//		x = rand() % Xmax - 16;
+//		y = rand() % Ymax - 16;
+//
+//		if (point_array.size() > 0)
+//			Move_WND( point_array[point_array.size()-1]->Handle,x,y);
 }
 //---------------------------------------------------------------------------
 
@@ -3470,7 +3498,7 @@ void  TFibonacciR::set_main_point_pos( TWPoint *Point, TForm *Owner )
 			{
 				Move_WND( Point->Handle, p.x, p.y );
 			}
-		Sleep(10);
+		Sleep(1);
 
 //	} while ( (GetKeyState(VK_LBUTTON) & 0x80) != 0 ) ; //nie bangla
 	} while (  (GetAsyncKeyState(VK_LBUTTON) ) ) ;
@@ -3481,8 +3509,9 @@ void  TFibonacciR::set_main_point_pos( TWPoint *Point, TForm *Owner )
 void __fastcall TFibonacciR::ButtonP2MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
+	ButtonLinFunc->Enabled = true;
 
-ImageListCursors->GetIcon( 1 %
+	ImageListCursors->GetIcon( 2 %
 	 ImageListCursors->Count, P2->Image1->Picture->Icon );                           // ikona powodzenia
 
      P2->Visible = true;
@@ -3495,6 +3524,8 @@ ImageListCursors->GetIcon( 1 %
 void __fastcall TFibonacciR::ButtonP1MouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
+	ButtonP2->Enabled = true;
+
 	P1->Show();
 	ImageListCursors->GetIcon( 2 %
 	 ImageListCursors->Count, P1->Image1->Picture->Icon );                           // ikona powodzenia
@@ -3520,37 +3551,28 @@ void __fastcall TFibonacciR::ButtonP2MouseMove(TObject *Sender, TShiftState Shif
 
 void __fastcall TFibonacciR::ButtonP2MouseEnter(TObject *Sender)
 {
-if (P2->Visible) {
-    	ImageListCursors->GetIcon( 3 %
-	 ImageListCursors->Count, P2->Image1->Picture->Icon );                           // ikona powodzenia
+	if (P2->Visible) {
+			ImageListCursors->GetIcon( 3 %
+		 ImageListCursors->Count, P2->Image1->Picture->Icon );                  // ikona yellow
 
-}
+	}
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TFibonacciR::ButtonP2MouseLeave(TObject *Sender)
 {
-		ImageListCursors->GetIcon( 5 %
-	 ImageListCursors->Count, P2->Image1->Picture->Icon );                           // ikona powodzenia
+ImageListCursors->GetIcon( 2 %
+	 ImageListCursors->Count, P2->Image1->Picture->Icon );                           // ikona zielona (taki jak by³)
+
 
 }
 //---------------------------------------------------------------------------
 
-void __fastcall TFibonacciR::ButtonP2MouseActivate(TObject *Sender, TMouseButton Button,
-          TShiftState Shift, int X, int Y, int HitTest, TMouseActivate &MouseActivate)
-
-{
-	P2->Visible = true;
-	ImageListCursors->GetIcon( 4 %
-	 ImageListCursors->Count, P2->Image1->Picture->Icon );                           // ikona powodzenia
-
-}
-//---------------------------------------------------------------------------
 
 void __fastcall TFibonacciR::ButtonP2MouseUp(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-StatusInfo( P2->Left + "x" + P2->Top );
+//StatusInfo( P2->Left + "x" + P2->Top );
 }
 //---------------------------------------------------------------------------
 
@@ -3565,6 +3587,11 @@ void __fastcall TFibonacciR::ButtonP1MouseActivate(TObject *Sender, TMouseButton
 void __fastcall TFibonacciR::ButtonP1MouseEnter(TObject *Sender)
 {
 //  ShowMessage(2);   // vielokrotnie before move
+	if (P1->Visible) {
+			ImageListCursors->GetIcon( 3 %
+		 ImageListCursors->Count, P1->Image1->Picture->Icon );                  // ikona yellow
+
+	}
 }
 //---------------------------------------------------------------------------
 
@@ -3578,12 +3605,21 @@ void __fastcall TFibonacciR::ButtonP1MouseMove(TObject *Sender, TShiftState Shif
 void __fastcall TFibonacciR::ButtonP1MouseLeave(TObject *Sender)
 {               // hover out
 //StatusInfo(5);
+   ImageListCursors->GetIcon( 2 %
+	 ImageListCursors->Count, P1->Image1->Picture->Icon );                           // ikona powodzenia
 
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TFibonacciR::Button10Click(TObject *Sender)
+{
 
+//	String a = "sth";
+//	 bool b;
+//	DoShowHint(a, (bool&)*&b, NULL );//	ShowBalloonTip( Button9, 1, "ik1",L"Zobacz punkty", 0,0 );
 
+}
+//---------------------------------------------------------------------------
 
 
 

@@ -38,7 +38,6 @@ __published:	// IDE-managed Components
 	TMaskEdit *MaskEditKod;
 	TCheckBox *CheckBox3;
 	TTabSheet *TabSheet2;
-	TCTrayIcon *CTrayIcon1;
 	TCheckBox *CheckBox4;
 	TGroupBox *GroupBox1;
 	TCheckBox *CheckBoxZ1;
@@ -255,6 +254,7 @@ __published:	// IDE-managed Components
 	void __fastcall FormKeyPress(TObject *Sender, System::WideChar &Key);
 	void __fastcall ButtonCloseClick(TObject *Sender);
 	void __fastcall ButtonCloseKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall TrayIcon1Click(TObject *Sender);
 
 
 

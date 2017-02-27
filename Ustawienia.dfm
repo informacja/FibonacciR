@@ -3918,16 +3918,6 @@ object Form2: TForm2
       end
     end
   end
-  object CTrayIcon1: TCTrayIcon
-    Visible = True
-    Hint = 'Fibonacci'
-    PopupMenu = PopupMenu1
-    Hide = True
-    RestoreOn = imLeftClickUp
-    PopupMenuOn = imRightClickUp
-    Left = 360
-    Top = 192
-  end
   object SaveTextFileDialog1: TSaveTextFileDialog
     DefaultExt = '.txt'
     FileName = 'C:\Users\Hera\Desktop\FiboLog.txt'
@@ -3948,10 +3938,10 @@ object Form2: TForm2
   end
   object ImageList1: TImageList
     ShareImages = True
-    Left = 368
+    Left = 416
     Top = 168
     Bitmap = {
-      494C010103000800640110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800680110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -4091,6 +4081,9 @@ object Form2: TForm2
       000000000000}
   end
   object TrayIcon1: TTrayIcon
+    BalloonFlags = bfInfo
+    PopupMenu = PopupMenu1
+    OnClick = TrayIcon1Click
     Left = 328
     Top = 192
   end

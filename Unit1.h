@@ -37,6 +37,7 @@
 #include <Vcl.ActnMan.hpp>
 #include <Vcl.ActnMenus.hpp>
 #include <Vcl.ToolWin.hpp>
+#include <Vcl.CheckLst.hpp>
 
 //---------------------------------------------------------------------------
 
@@ -310,7 +311,6 @@ __published:	// IDE-managed Components
 	TButtonedEdit *EditADSSave;
 	TListView *ListViewDrop;
 	TTabSheet *TabSheet1;
-	TSpeedButton *SpeedButton2;
 	TButton *ButtonSzukaj;
 	TListView *ListView1;
 	TPanel *Panel1;
@@ -389,11 +389,13 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TLabel *Label2;
 	TButton *Button7;
-	TButton *Button8;
 	TImageList *ImageListCursors;
+	TButton *ButtonRandom;
+	TCheckBox *CheckBoxClearP;
 	TButton *ButtonP1;
 	TButton *ButtonP2;
-	TButton *Button9;
+	TButton *ButtonLinFunc;
+	TCheckListBox *CheckListPoints;
 	void __fastcall Zamknij1Click(TObject *Sender);
 	void __fastcall Button1Click(TObject *Sender);
 	void __fastcall Kopiuj1Click(TObject *Sender);
@@ -566,13 +568,10 @@ __published:	// IDE-managed Components
 	void __fastcall EditConsoleTextSizeChange(TObject *Sender);
 	void __fastcall Button4Click(TObject *Sender);
 	void __fastcall EditFileMangerChange(TObject *Sender);
-	void __fastcall Button8Click(TObject *Sender);
-	void __fastcall Button8MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+	void __fastcall ButtonRandomClick(TObject *Sender);
+	void __fastcall ButtonRandomMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
-	void __fastcall Button8MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
-	void __fastcall Button8MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
-	void __fastcall Button9Click(TObject *Sender);
+	void __fastcall ButtonLinFuncClick(TObject *Sender);
 	void __fastcall ButtonP2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall ButtonP1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
@@ -580,8 +579,6 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonP2MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall ButtonP2MouseEnter(TObject *Sender);
 	void __fastcall ButtonP2MouseLeave(TObject *Sender);
-	void __fastcall ButtonP2MouseActivate(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y, int HitTest, TMouseActivate &MouseActivate);
 	void __fastcall ButtonP2MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall ButtonP1MouseActivate(TObject *Sender, TMouseButton Button, TShiftState Shift,
@@ -589,7 +586,8 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonP1MouseEnter(TObject *Sender);
 	void __fastcall ButtonP1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 	void __fastcall ButtonP1MouseLeave(TObject *Sender);
-
+	void __fastcall DoShowHint(UnicodeString &HintStr, bool &CanShow, THintInfo &HintInfo);
+	void __fastcall Button10Click(TObject *Sender);
 
 
 
@@ -641,6 +639,7 @@ private:
 	TGdiplus *GdiPlus;
 	String MPC_HC_Player_path;
 	RECT rect;
+	int Xmax, Ymax;                     // max (aktualna) rozdzielczoœæ ekranów
 
 	TWPoint *P1;
 	TWPoint *P2;

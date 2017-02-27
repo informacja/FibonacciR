@@ -10,9 +10,6 @@ Coordinates=57,173,59,36
 [Plik1]
 Coordinates=0,137,43,36
 
-[CTrayIcon1]
-Coordinates=380,1,70,33
-
 [Pomoc1]
 Coordinates=380,56,61,36
 
@@ -62,7 +59,7 @@ Coordinates=10,124,57,36
 Coordinates=249,78,78,36
 
 []
-Coordinates=804,353,81,33
+Coordinates=380,1,70,33
 Visible=True
 
 [Kopiuj1]
