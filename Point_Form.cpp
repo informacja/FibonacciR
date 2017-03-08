@@ -20,6 +20,20 @@ __fastcall TWPoint::TWPoint(TComponent* Owner)
 	//assert(mFormMain!=0); //Assume cast succeeded
 
 	move = false;
+
+}
+__fastcall TWPoint::TWPoint(TComponent* Owner, unsigned id = ID::DEFAULT)
+	: TForm(Owner),ID(id)
+{
+	move = false;
+}
+
+__fastcall TWPoint::TWPoint(TComponent* Owner, unsigned id = ID::DEFAULT,
+					int x = 0, int y = 0, bool CanMove)
+	: TForm(Owner), ID(id), move(CanMove)
+{
+	Move_WND( this->Handle, x, y );
+	this->Show();
 }
 //---------------------------------------------------------------------------
 void __fastcall TWPoint::FormDblClick(TObject *Sender)
@@ -72,6 +86,7 @@ void __fastcall TWPoint::Image1MouseUp(TObject *Sender, TMouseButton Button, TSh
 void __fastcall TWPoint::FormCreate(TObject *Sender)
 {
 	DoubleBuffered = true;
+
 
 	if (GetWindowRect( this->Handle, &Rect) )
 	{

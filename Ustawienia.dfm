@@ -6,7 +6,7 @@ object Form2: TForm2
   BorderStyle = bsSingle
   Caption = 'Ustawienia'
   ClientHeight = 225
-  ClientWidth = 488
+  ClientWidth = 500
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -2521,13 +2521,13 @@ object Form2: TForm2
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 488
+    Width = 500
     Height = 225
     Margins.Left = 0
     Margins.Top = 0
     Margins.Right = 0
     Margins.Bottom = 0
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     Align = alClient
     MultiLine = True
     ScrollOpposite = True
@@ -2876,6 +2876,16 @@ object Form2: TForm2
         Height = 13
         Caption = '='
       end
+      object Label5: TLabel
+        Left = 19
+        Top = 98
+        Width = 454
+        Height = 13
+        Caption = 
+          '----------------------------------------------------------------' +
+          '-----------------------------------------------------'
+        Enabled = False
+      end
       object MaskEditInkrem: TMaskEdit
         Left = 150
         Top = 18
@@ -2898,8 +2908,8 @@ object Form2: TForm2
         OnKeyPress = MaskEditInkremKeyPress
       end
       object HotKey1: THotKey
-        Left = 19
-        Top = 101
+        Left = 339
+        Top = 36
         Width = 121
         Height = 19
         HotKey = 32833
@@ -2921,6 +2931,22 @@ object Form2: TForm2
         State = cbChecked
         TabOrder = 2
         OnClick = CheckBoxRoundClick
+      end
+      object CheckBoxPointTop: TCheckBox
+        Left = 30
+        Top = 117
+        Width = 161
+        Height = 17
+        Caption = 'Strza'#322'ki zawsze na wierzchu'
+        TabOrder = 3
+      end
+      object CheckBoxCanMove: TCheckBox
+        Left = 30
+        Top = 140
+        Width = 161
+        Height = 17
+        Caption = 'Zmiana pozycji strza'#322'ek'
+        TabOrder = 4
       end
     end
     object TabSheet4: TTabSheet
@@ -3941,7 +3967,7 @@ object Form2: TForm2
     Left = 416
     Top = 168
     Bitmap = {
-      494C010103000800680110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800700110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

@@ -38,7 +38,7 @@
 #include <Vcl.ActnMenus.hpp>
 #include <Vcl.ToolWin.hpp>
 #include <Vcl.CheckLst.hpp>
-
+#include <math.h>
 //---------------------------------------------------------------------------
 
 #ifdef _WIN32
@@ -153,6 +153,7 @@ using namespace std;
 
 
  class 	TFloatFI;					// deklaracja istnienia dla poinformowania klasy TFibonacciR
+ class Linear_Func;
 
 //---------------------------------------------------------------------------
 class TFibonacciR : public TForm
@@ -588,25 +589,8 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonP1MouseLeave(TObject *Sender);
 	void __fastcall DoShowHint(UnicodeString &HintStr, bool &CanShow, THintInfo &HintInfo);
 	void __fastcall Button10Click(TObject *Sender);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	void __fastcall Create4OnLineArrows( Linear_Func* a, int x, int y);
+	void __fastcall Create4NormalArrows( Linear_Func* a, int x, int y);
 
 private:
 
@@ -640,10 +624,10 @@ private:
 	String MPC_HC_Player_path;
 	RECT rect;
 	int Xmax, Ymax;                     // max (aktualna) rozdzielczoœæ ekranów
+	int	fiX;							// wartoœæ FI * Lenght( P1, P2 )
 
 	TWPoint *P1;
 	TWPoint *P2;
-
 
 	THsearch *thWatek[ 9 ]; //= { NULL };  	//  wskaŸnik na w¹tki i jego metody
 
@@ -658,7 +642,7 @@ public:
 		void QuestionForADS();
 		void ResetIconList( unsigned size_0 = 0);
 //		gd::TGdiplus *gd;
-	void closeTH( Number );
+		void closeTH( Number );
 		TRegistry *Reg;
 
 	TImageList *IconList;

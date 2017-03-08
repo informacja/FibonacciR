@@ -955,14 +955,14 @@ unsigned FindStream(TListView *list, String *Path, unsigned *n) {
 	return *n;
 }
 //---------------------------------------------------------------------------
-  template <typename Tail>
-void foobar(const std::string& head, Tail&& tail)
-{
-	// do something with head
-	std::cout << head << '\n';
-	// call foobar recursively with remaining arguments
-	foobar(std::forward<Tail>(tail)...);
-}
+//  template <typename Tail>
+//void foobar(const std::string& head, Tail&& tail)
+//{
+//	// do something with head
+//	std::cout << head << '\n';
+//	// call foobar recursively with remaining arguments
+//	foobar(std::forward<Tail>(tail)...);
+//}
 //---------------------------------------------------------------------------
 unsigned short TypeFileIcon( String *path, TListView *list, bool ext) {           // ext only = ADS
 

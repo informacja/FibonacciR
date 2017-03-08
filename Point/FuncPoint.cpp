@@ -96,13 +96,14 @@ Linear_Func::Linear_Func( Punkt a, Punkt b )
 
 	// wyznaczanie współczynnika kierunkowego dla funkcji prostopadłej
 	if ( A != 0 )
-		Anormal = -1 / A;
+		Anormal = 1 / A;
 	else
-		Anormal = 0;
+		Anormal = 1;      // ATTENTION - breakpoit:  co się dzieje czy nie powinno być 0
 //    black(Anormal);
 
-    // obliczanie wyrazu wolnego, funkcji prostopadłej, tak by przechodziła przez punkt S( pomiędzy punktami A i B )
-    Bnormal = (Anormal * S.X) - S.Y;
+	// obliczanie wyrazu wolnego, funkcji prostopadłej, tak by przechodziła przez punkt S( pomiędzy punktami A i B )
+	Bnormal = (Anormal * S.X) - S.Y + (Minus( a.Y, b.Y ) );
+//	Bnormal = -(Minus( a.Y, b.Y ) / 2.0);
 
     //srodek.X = ( Bnormal - B ) / ( Anormal - A );
     //srodek.Y = Anormal * srodek.X + Bnormal;
@@ -159,13 +160,20 @@ double Linear_Func::CalcFor( Punkt z )
 
 double Linear_Func::CalcForNormal( double x )
 {
-    return Anormal * x + Bnormal;     /// y = ax + b;
+    return Anormal * x - Bnormal;     /// y = ax + b;
+//	return Anormal * x;
 }
 
 double Linear_Func::CalcForNormal( Punkt z )      // przeci¹¿enie ta funkcja sama pobierze wartoœæ x z obiektu Point
 {
-    return Anormal * z.X - Bnormal;     /// y = ax - b;
+	return Anormal * z.X - Bnormal;     /// y = ax - b;
 }
+
+double Linear_Func::CalcYforNormalX( double y )
+{
+	return (y / Anormal)+Bnormal ;
+}
+
 
 // ------------------------------------------------------
 

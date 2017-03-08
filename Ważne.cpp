@@ -200,18 +200,18 @@ void __fastcall TFibonacciR::OnDropFiles(TMessage &Msg) {
 //---------------------------------------------------------------------------
  void __fastcall TFibonacciR::DoShowHint(UnicodeString &HintStr, bool &CanShow, THintInfo &HintInfo)
 {
-  if (HintInfo.HintControl == StatusBar1)
-  {
-    HintInfo.HintColor = clAqua;// Changes only for this hint
-    HintInfo.HintMaxWidth = 120; // Hint text word wraps if width is greater than 120
-//	HintInfo.HintPos.x += Button9->Width; // Move hint to right edge
-//	  if (HintInfo.HintControl == Button10)
-	HintInfo.HideTimeout = 30000;
-//	Application->HintHidePause = 30000;
-  }
-//	  StatusBar1->Panels->Items[0]->Text =  *HintStr;
-  StatusBar1->Panels->Items[1]->Text =
-		GetLongHint(Application->Hint);
+//  if (HintInfo.HintControl == StatusBar1)
+//  {
+//    HintInfo.HintColor = clAqua;// Changes only for this hint
+//    HintInfo.HintMaxWidth = 120; // Hint text word wraps if width is greater than 120
+////	HintInfo.HintPos.x += Button9->Width; // Move hint to right edge
+////	  if (HintInfo.HintControl == Button10)
+//	HintInfo.HideTimeout = 30000;
+////	Application->HintHidePause = 30000;
+//  }
+////	  StatusBar1->Panels->Items[0]->Text =  *HintStr;
+//  StatusBar1->Panels->Items[1]->Text =
+//		GetLongHint(Application->Hint);
 }
 
 void __fastcall TFibonacciR::FormCreate(TObject *Sender) {
@@ -599,7 +599,7 @@ bool Close_Points_WND()        // TO DO DONT WORK
 {
 	bool good = false;
 
-	for ( int i = FibonacciR->point_array.size() - 1 ; i > 0; i--) {
+	for ( int i = FibonacciR->point_array.size() - 1 ; i >= 0; i--) {
 	if ( NULL != FibonacciR->point_array[i] )
 		if ( IsWindow (FibonacciR->point_array[i]->Handle) )
 			if ( FibonacciR->point_array[i]->Handle != NULL ) {

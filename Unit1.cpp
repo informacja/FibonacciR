@@ -3,6 +3,8 @@
 
 #include "Unit1.h"
 #include "Point/FuncPoint.h"
+#include <math.h>
+
 
 // ---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -164,7 +166,6 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
 
 	EditADSSave->OnRightButtonClick(Owner);
 
-
 	S::T.reset(this);                                                           // ustawianie rodziców dla singletona
 
 	S::ptr = this->StatusBar1;
@@ -172,7 +173,6 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
 
 	Xmax = GetSystemMetrics( SM_CXVIRTUALSCREEN);
 	Ymax = GetSystemMetrics( SM_CYVIRTUALSCREEN);
-
 
 	CSpinButton1->Ctl3D = false;       											// nie dzia³a inaczej
 	CSpinButton2->Ctl3D = false;
@@ -187,7 +187,7 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
 //	TabSheet1->TabVisible = false;
 //	TabSheet5->TabVisible = false;
 	TabSheetInne->TabVisible = false;
-	CheckBoxClearP->Visible = false;
+//	CheckBoxClearP->Visible = false;
 	ButtonRandom->Visible = false;
 
 //	TabSheet2->TabVisible = false;
@@ -195,7 +195,7 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
 
 	PageControl2->ActivePageIndex = 1;
 	Zawszenawierzchu1->Enabled = false;
-	this->Caption = "FibonacciR Free " + ::GetFileVersion( ParamStr(0) );
+	this->Caption = "FibonacciR " + ::GetFileVersion( ParamStr(0) );
 	GroupBox5->Visible = false;
 //	this->Height -= GroupBox5->Height;
 
@@ -3397,13 +3397,17 @@ void __fastcall TFibonacciR::ButtonLinFuncClick(TObject *Sender)
 {
 	CheckListPoints->Enabled = true;
 
-    int x, y;
-//	vector<Punkt> tab (2);//	tab.resize(2);//	Punkt tab1( MIN(P1->pozX, P2->pozX), MIN(P1->pozY, P2->pozY));//	Punkt tab2( MAX(P1->pozX, P2->pozX), MAX(P1->pozY, P2->pozY));
-//	Punkt tab3(600, 600);
+	if ( CheckBoxClearP->Checked )
+		 Close_Points_WND();
 
-	Punkt tab1( P1->pozX, P1->pozY );
-	Punkt tab2( P2->pozX, P2->pozY );
-	Linear_Func a( tab1, tab2 );    // wyznaczam wzory funkcji
+    int x, y;
+	Punkt tab1( P1->pozX, P1->pozY );
+	Punkt tab2( P2->pozX, P2->pozY );
+
+//	Punkt tab1N( MIN(P1->pozX, P2->pozX), MIN(P1->pozY, P2->pozY));
+//	Punkt tab2N( MAX(P1->pozX, P2->pozX), MAX(P1->pozY, P2->pozY));
+	Linear_Func a( tab1, tab2 );    											// wyznacz wzory funkcji
+//	Linear_Func aForNormal( tab1N, tab2N );
 
 //	Linear_Func b(tab2, tab3);// = {  tab[1], tab[2] };
 //	Punkt S;
@@ -3433,10 +3437,10 @@ void __fastcall TFibonacciR::ButtonLinFuncClick(TObject *Sender)
 
 		if ( P2->pozX < P1->pozX )
 		{
-		   	y += 2* Minus( P1->pozY, y );     // 3 æwiartka
+			y += 2* Minus( P1->pozY, y );     // 3 æwiartka
 		}
 		if ( P2->pozY < P1->pozY ) {
-            y -= 2* Minus( P1->pozY, y );
+			y -= 2* Minus( P1->pozY, y );
 		}
 
 		Move_WND( f3->Handle, x, y );
@@ -3444,33 +3448,16 @@ void __fastcall TFibonacciR::ButtonLinFuncClick(TObject *Sender)
 	}
 ///////////////////////////////////////////////		DrawNormalPoints();  on a line
 
-	const int fiX = FI * Minus( P1->pozX, P2->pozX );
+	fiX = FI * Minus( P1->pozX, P2->pozX );
 
-	for ( int i = 0; i < 4; i++)
-	{
-		point_array.push_back( new TWPoint(this) );
-		point_array[point_array.size()-1]->Show();
-	}
+// ########################################################################
 
-	if ( ! point_array.size() > 0) 	return;
+	Create4OnLineArrows( &a, x, y );
 
-	x = fiX - P1->pozX;
-	y = (int)a.CalcFor( x ) % Ymax;
-	Move_WND( point_array[point_array.size()-4]->Handle,x,y);
+//	Create4NormalArrows( &aForNormal, x, y );
+	Create4NormalArrows( &a, x, y );
 
-//	x = fiX + P1->pozX;
-//	y = (int)a.CalcFor( x ) % Ymax;
-//	Move_WND( point_array[point_array.size()-3]->Handle,x,y);
-
-//	x = fiX - P2->pozX;
-//	y = (int)a.CalcFor( x ) % Ymax;
-//	Move_WND( point_array[point_array.size()-2]->Handle,x,y);
-//
-//	x = fiX + P2->pozX;
-//	y = (int)a.CalcFor( x ) % Ymax;
-//	Move_WND( point_array[point_array.size()-1]->Handle,x,y);
-
-	StatusInfo( fiX );
+//	StatusInfo( fiX );
 
 //	point_array[point_array.size()-1]
 //		x = rand() % Xmax - 16;
@@ -3481,6 +3468,174 @@ void __fastcall TFibonacciR::ButtonLinFuncClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+void __fastcall TFibonacciR::Create4OnLineArrows( Linear_Func *a, int x, int y )
+{
+//	for ( int i = 0; i < 4; i++)
+//	{
+//		point_array.push_back( new TWPoint(this, ID::ON_LINE ) );  // 1 to ID Liniowych
+//		point_array[point_array.size()-1]->Show();
+//	}
+//
+//	if ( ! point_array.size() > 0) 	return;
+
+//	if ( P1->pozX < fiX ) {
+//			ShowMessage("poza ekranem");
+//	}
+
+// ----- Line point 1 -----
+
+	x = P1->pozX - ( FI *  Minus( P1->pozX, P2->pozX ) );
+	y = (int)a->CalcFor( x );
+
+	if ( P1->pozX > P2->pozX ) { x += (2* Minus( P1->pozX, x )); }    // 1, 4 æwiartka
+	if ( P1->pozY > P2->pozY ) { y += (2* Minus( P1->pozY, y )); }    // 3, 4 æwiartka
+
+//	Move_WND( point_array[point_array.size()-4]->Handle,x,y );
+	point_array.push_back( new TWPoint( this, ID::ON_LINE, x, y ) );  			// 1 to ID Liniowych
+
+// DEBUG
+//	int c = x
+//	Punkt w( x, y );
+//	Punkt d( P1->pozX, P1->pozY );
+//	Punkt e( P2->pozX, P2->pozY );
+//		ShowMessage( FI * Length(e ,d));
+//	ShowMessage( Length(w ,d));    // check it
+
+// ----- Line point 2 -----
+
+	x = P2->pozX - fiX;
+		if ( P1->pozX > P2->pozX ) { x = P1->pozX - fiX; }
+
+	y = (int)a->CalcFor( x ) % Ymax;
+
+	if ( P1->pozY > P2->pozY ) {
+		if ( P1->pozX < P2->pozX ) {
+			 y -= (2* Minus( P1->pozY, y ));
+		}
+	}
+	else {
+		if ( P1->pozX > P2->pozX ) {
+			 y = P1->pozY + ( FI * Minus( P1->pozY, P2->pozY ));
+		}
+	}
+//	Move_WND( point_array[point_array.size()-3]->Handle,x,y);
+	point_array.push_back( new TWPoint( this, ID::ON_LINE, x, y ) );  			// 1 to ID Liniowych
+
+// ----- Line point 3 -----
+
+	if ( P1->pozX > P2->pozX ) {
+				x = P2->pozX + fiX;
+	} else { 	x = P1->pozX + fiX;
+	}
+
+	y = (int)a->CalcFor( x ) % Ymax;
+
+	if ( P1->pozY > P2->pozY ) {
+		if ( P1->pozX < P2->pozX ) {
+			 y -= (2* Minus( P1->pozY, y ));
+		}
+	}
+	else {
+		if ( P1->pozX > P2->pozX ) {
+			 y = P1->pozY + ( (1 - FI) * Minus( P1->pozY, P2->pozY ));
+		}
+	}
+
+//	Move_WND( point_array[point_array.size()-2]->Handle,x,y);
+	point_array.push_back( new TWPoint( this, ID::ON_LINE, x, y ) );  			// 1 to ID Liniowych
+
+// ----- Line point 4 -----
+
+	x = fiX + P2->pozX;
+	y = (int)a->CalcFor( x ) % Ymax;
+
+	if ( P1->pozX > P2->pozX ) {
+
+		x -= (2* Minus( P2->pozX, x ));
+
+		if ( P1->pozY > P2->pozY )y -= (2* Minus( P2->pozY, y ));
+		else if ( P1->pozY < P2->pozY ) y += Minus( P2->pozY, y ) + ( (1 - FI) * Minus( P2->pozY, y) );
+
+	}
+	else if ( P1->pozY > P2->pozY ) { y -= (2* Minus( P1->pozY, y )); }    //  æwiartka
+
+//	Move_WND( point_array[point_array.size()-1]->Handle,x,y);
+	point_array.push_back( new TWPoint( this, ID::ON_LINE, x, y ) );  			// 1 to ID Liniowych
+
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFibonacciR::Create4NormalArrows( Linear_Func *a, int x, int y )
+{
+//	for ( int i = 0; i < 4; i++)
+//	{
+//		point_array.push_back( new TWPoint(this, ID::NORMAL_TO_LINE ) );  // 2 to ID prostopad³ych
+//		point_array[point_array.size()-1]->Show();
+//	}
+//
+//	if ( ! point_array.size() > 0 ) 	return;
+
+
+// ----- Normal point 1 -----
+
+//	x = P1->pozX;
+
+
+
+	for ( int i = 0; i < 10; i++) {
+
+	x = P1->pozX - ( FI *  Minus( P1->pozX, P2->pozX ) )- i*20;
+	y = (int)a->CalcForNormal( x + Minus( P1->pozX, P2->pozX )/2) ;
+
+                  // tak ¿egby by³o dok³adnie FI
+
+
+
+	 if( P1->pozX < P2->pozX )
+		if ( P1->pozY < P2->pozY )      					// 2, 4 æwiartka
+		{
+			y =  P1->pozX + i*25;
+			x = (int) a->CalcForNormal( y )- i*25;
+		}
+	
+//		if ( P1->pozY > P2->pozY )y -= (2* Minus( P2->pozY, y ));//	ShowMessage(x );
+//	ShowMessage(y );
+//
+//	y = (int)a->CalcFor( x ) ;
+//
+
+//	if ( P1->pozX > P2->pozX ) {
+
+//		x -= (2* Minus( P2->pozX, x ));
+
+//		if ( P1->pozY > P2->pozY ) y -= (2* Minus( P2->pozY, y ));
+//		else if ( P1->pozY < P2->pozY ) y -= Minus( P2->pozY, y ) + ( (1 - FI) * Minus( P2->pozY, y) );
+
+//	}
+//	else if ( P1->pozY > P2->pozY ) { y -= (2* Minus( P1->pozY, y )); }    //  æwiartka
+
+	point_array.push_back( new TWPoint( this, ID::NORMAL_TO_LINE, x, y ) );  // 2 to ID prostopad³ych
+	}
+
+//	point_array[ point_array.size()-1 ]->Show();
+
+//	Move_WND( point_array[point_array.size()-1]->Handle,x,y);
+	// TO DO
+	// zamiast tworzenia na sztywno 4 i powy¿szej lini, u¿ywaæ push back z
+	// list¹ inincjalizuj¹c¹
+
+// ----- Normal point 2 -----
+
+// ----- Normal point 3 -----
+
+// ----- Normal point 4 -----
+
+}
+
+//---------------------------------------------------------------------------
+
 void  TFibonacciR::set_main_point_pos( TWPoint *Point, TForm *Owner )
 {
 	POINT p;
@@ -3489,14 +3644,15 @@ void  TFibonacciR::set_main_point_pos( TWPoint *Point, TForm *Owner )
 	if (GetCursorPos(&p))
 	{
 		GetWindowRect(Owner->Handle, &rect);
-		Move_WND( Owner->Handle, -2000,-2000 );
+//		Move_WND( Owner->Handle, -2000,-2000 );
 	}
 	do
 	{
-		if (  Point != NULL)
+		if ( Point != NULL )
 			if (GetCursorPos(&p))
 			{
 				Move_WND( Point->Handle, p.x, p.y );
+				StatusInfo( String(p.x + "x" + p.y) );
 			}
 		Sleep(1);
 
@@ -3529,7 +3685,6 @@ void __fastcall TFibonacciR::ButtonP1MouseDown(TObject *Sender, TMouseButton But
 	P1->Show();
 	ImageListCursors->GetIcon( 2 %
 	 ImageListCursors->Count, P1->Image1->Picture->Icon );                           // ikona powodzenia
-
 
 	set_main_point_pos( P1, this );
 		SetWindowPos( this->Handle,(HWND__ *) 0, rect.left, rect.top, rect.right-rect.left, rect.bottom-rect.top, 0 );
@@ -3620,9 +3775,4 @@ void __fastcall TFibonacciR::Button10Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
 

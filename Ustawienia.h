@@ -158,6 +158,9 @@ __published:	// IDE-managed Components
 	TImage *ImagePreview;
 	TButton *Button5;
 	TButton *ButtonClose;
+	TCheckBox *CheckBoxPointTop;
+	TLabel *Label5;
+	TCheckBox *CheckBoxCanMove;
 	void __fastcall TrackBar1Change(TObject *Sender);
 	void __fastcall CheckBox2Click(TObject *Sender);
 	void __fastcall CheckBox3Click(TObject *Sender);

@@ -5,8 +5,8 @@ object WPoint: TWPoint
   BorderIcons = []
   BorderStyle = bsNone
   Caption = 'Point Form'
-  ClientHeight = 22
-  ClientWidth = 22
+  ClientHeight = 16
+  ClientWidth = 16
   Color = clWindow
   TransparentColor = True
   TransparentColorValue = clWhite
@@ -17,10 +17,12 @@ object WPoint: TWPoint
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsStayOnTop
   GlassFrame.SheetOfGlass = True
   OldCreateOrder = False
   Position = poDefault
   PrintScale = poPrintToFit
+  ScreenSnap = True
   ShowHint = True
   StyleElements = []
   OnCreate = FormCreate
@@ -29,12 +31,10 @@ object WPoint: TWPoint
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    AlignWithMargins = True
-    Left = 3
-    Top = 3
+    Left = 0
+    Top = 0
     Width = 16
     Height = 16
-    IncrementalDisplay = True
     Picture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D49484452000000100000
       001008060000001FF3FF61000000097048597300000B1300000B1301009A9C18

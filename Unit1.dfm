@@ -2578,7 +2578,6 @@ object FibonacciR: TFibonacciR
       end>
     OnCreatePanelClass = StatusBar1CreatePanelClass
     OnResize = StatusBar1Resize
-    ExplicitTop = 376
   end
   object PageControl3: TPageControl
     AlignWithMargins = True
@@ -2595,10 +2594,8 @@ object FibonacciR: TFibonacciR
     Images = ImageListMenu
     Style = tsFlatButtons
     TabOrder = 2
-    ExplicitHeight = 185
     object TabSheetFI: TTabSheet
       Caption = 'FI'
-      ExplicitHeight = 344
       object PageControl2: TPageControl
         AlignWithMargins = True
         Left = 0
@@ -2614,10 +2611,8 @@ object FibonacciR: TFibonacciR
         MultiLine = True
         TabOrder = 0
         TabStop = False
-        ExplicitHeight = 344
         object TabSheet3: TTabSheet
           Caption = 'Liczby Ca'#322'kowite'
-          ExplicitHeight = 316
           DesignSize = (
             478
             181)
@@ -2792,7 +2787,7 @@ object FibonacciR: TFibonacciR
           end
           object GroupBox5: TGroupBox
             Left = 288
-            Top = 126
+            Top = 122
             Width = 243
             Height = 35
             Anchors = [akLeft, akRight, akBottom]
@@ -2803,7 +2798,6 @@ object FibonacciR: TFibonacciR
             ShowHint = True
             TabOrder = 4
             Visible = False
-            ExplicitTop = 261
             DesignSize = (
               243
               35)
@@ -2865,7 +2859,6 @@ object FibonacciR: TFibonacciR
         object TabSheet4: TTabSheet
           Caption = 'Tryb Zaawansowany'
           ImageIndex = 1
-          ExplicitHeight = 316
           object wej: TEdit
             Tag = 1
             Left = 30
@@ -3207,8 +3200,8 @@ object FibonacciR: TFibonacciR
             OnClick = CheckBoxZapiszClick
           end
           object ButtonRandom: TButton
-            Left = 383
-            Top = 167
+            Left = 302
+            Top = 161
             Width = 75
             Height = 25
             Caption = 'Random'
@@ -3217,8 +3210,8 @@ object FibonacciR: TFibonacciR
             OnMouseUp = ButtonRandomMouseUp
           end
           object CheckBoxClearP: TCheckBox
-            Left = 302
-            Top = 167
+            Left = 383
+            Top = 161
             Width = 75
             Height = 17
             Caption = 'Auto Clear'
@@ -3268,7 +3261,7 @@ object FibonacciR: TFibonacciR
             Width = 71
             Height = 25
             Hint = 'Tworzy punkty '
-            Caption = 'Linia'
+            Caption = 'Oblicz'
             Enabled = False
             ParentShowHint = False
             ShowHint = True
@@ -3304,7 +3297,6 @@ object FibonacciR: TFibonacciR
     object TabSheetADS: TTabSheet
       Caption = 'ADS'
       ImageIndex = 1
-      ExplicitHeight = 344
       object PageControl4: TPageControl
         Left = 0
         Top = 0
@@ -3317,7 +3309,6 @@ object FibonacciR: TFibonacciR
         object TabSheet5: TTabSheet
           Caption = 'Utw'#243'rz'
           ImageIndex = 2
-          ExplicitHeight = 316
           DesignSize = (
             478
             181)
@@ -3348,7 +3339,7 @@ object FibonacciR: TFibonacciR
             Left = 367
             Top = 162
             Width = 197
-            Height = 56
+            Height = 52
             Hint = 'List Box|Przenie'#347' i upu'#347#263' ikon'#281' tutaj|0'
             CustomHint = BalloonHint1
             Style = lbOwnerDrawFixed
@@ -3370,11 +3361,10 @@ object FibonacciR: TFibonacciR
             TabOrder = 0
             OnDblClick = ListBox1DblClick
             OnDrawItem = ListBox1DrawItem
-            ExplicitHeight = 134
           end
           object PanelSaveBy: TPanel
             Left = 0
-            Top = 115
+            Top = 111
             Width = 337
             Height = 41
             Anchors = [akLeft, akRight, akBottom]
@@ -3383,7 +3373,6 @@ object FibonacciR: TFibonacciR
             Locked = True
             ParentCtl3D = False
             TabOrder = 3
-            ExplicitTop = 250
             DesignSize = (
               337
               41)
@@ -3423,7 +3412,7 @@ object FibonacciR: TFibonacciR
             Left = 0
             Top = 0
             Width = 478
-            Height = 123
+            Height = 119
             Hint = 'Przenie'#347' i upu'#347#263' pliki do dopisania jako ADS tutaj'
             Margins.Left = 0
             Margins.Top = 0
@@ -3460,19 +3449,17 @@ object FibonacciR: TFibonacciR
             TabOrder = 4
             ViewStyle = vsReport
             OnDblClick = ListViewDropDblClick
-            ExplicitHeight = 258
           end
         end
         object TabSheet1: TTabSheet
           Caption = 'Szukaj'
           ImageIndex = 3
-          ExplicitHeight = 316
           DesignSize = (
             478
             181)
           object ButtonSzukaj: TButton
             Left = 375
-            Top = 127
+            Top = 123
             Width = 91
             Height = 25
             Anchors = [akRight, akBottom]
@@ -3488,14 +3475,13 @@ object FibonacciR: TFibonacciR
             Style = bsSplitButton
             TabOrder = 0
             OnClick = ButtonSzukajClick
-            ExplicitTop = 262
           end
           object ListView1: TListView
             AlignWithMargins = True
             Left = 0
             Top = 0
             Width = 478
-            Height = 123
+            Height = 119
             Margins.Left = 0
             Margins.Top = 0
             Margins.Right = 0
@@ -3564,18 +3550,16 @@ object FibonacciR: TFibonacciR
             OnDblClick = ListView1DblClick
             OnKeyDown = ListView1KeyDown
             OnKeyPress = ListView1KeyPress
-            ExplicitHeight = 258
           end
           object Panel1: TPanel
             AlignWithMargins = True
             Left = 11
-            Top = 150
+            Top = 146
             Width = 334
             Height = 18
             Anchors = [akLeft, akRight, akBottom]
             BevelOuter = bvNone
             TabOrder = 2
-            ExplicitTop = 285
             object LabelEXT: TLabel
               Left = 0
               Top = 0
@@ -3596,12 +3580,13 @@ object FibonacciR: TFibonacciR
               WordWrap = True
               OnClick = LabelEXTClick
               OnDblClick = LabelEXTDblClick
-              ExplicitLeft = -8
+              ExplicitWidth = 16
+              ExplicitHeight = 13
             end
           end
           object ButtonedEditSearch: TButtonedEdit
             Left = 3
-            Top = 129
+            Top = 125
             Width = 292
             Height = 21
             Hint = #346'cie'#380'ka|Ta lokalizacja zostane przszukana'
@@ -3632,7 +3617,6 @@ object FibonacciR: TFibonacciR
             OnKeyDown = ButtonedEditSearchKeyDown
             OnKeyPress = ButtonedEditSearchKeyPress
             OnRightButtonClick = ButtonedEditSearchRightButtonClick
-            ExplicitTop = 264
           end
         end
       end
@@ -3640,7 +3624,6 @@ object FibonacciR: TFibonacciR
     object TabSheetSystem: TTabSheet
       Caption = 'System'
       ImageIndex = 2
-      ExplicitHeight = 344
       object PageControl5: TPageControl
         Left = 0
         Top = 0
@@ -3649,12 +3632,10 @@ object FibonacciR: TFibonacciR
         ActivePage = TabSheetInne
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 344
         object TabSheetCMD: TTabSheet
           Hint = 'Kolor t'#322'a w konsoli systemowej'
           Caption = 'CMD'
           ImageIndex = 2
-          ExplicitHeight = 316
           object EditConsoleTextSize: TLabeledEdit
             Left = 202
             Top = 48
@@ -3687,7 +3668,6 @@ object FibonacciR: TFibonacciR
         object TabSheetWindows: TTabSheet
           Caption = 'System'
           ImageIndex = 4
-          ExplicitHeight = 316
           object Label1: TLabel
             Left = 8
             Top = 50
@@ -3811,7 +3791,6 @@ object FibonacciR: TFibonacciR
         object TabSheetInne: TTabSheet
           Caption = 'Inne'
           ImageIndex = 3
-          ExplicitHeight = 316
           DesignSize = (
             478
             181)
@@ -3881,14 +3860,13 @@ object FibonacciR: TFibonacciR
           end
           object EditCurrsor: TEdit
             Left = 3
-            Top = 137
+            Top = 133
             Width = 462
             Height = 21
             Anchors = [akLeft, akRight, akBottom]
             TabOrder = 3
             TextHint = 'Kursor nad...'
             OnClick = EditCurrsorClick
-            ExplicitTop = 272
           end
           object Button7: TButton
             Left = 21
@@ -3903,7 +3881,6 @@ object FibonacciR: TFibonacciR
           Caption = 'Rejestr'
           ImageIndex = 1
           OnShow = TabSheetRejestrShow
-          ExplicitHeight = 316
           object GroupBoxReg: TGroupBox
             AlignWithMargins = True
             Left = 5
@@ -4061,7 +4038,6 @@ object FibonacciR: TFibonacciR
     object TabSheetGraph: TTabSheet
       Caption = 'Grafika'
       ImageIndex = 3
-      ExplicitHeight = 344
       object PageControl1: TPageControl
         Left = 0
         Top = 0
@@ -4071,10 +4047,9 @@ object FibonacciR: TFibonacciR
         Margins.Top = 0
         Margins.Right = 0
         Margins.Bottom = 0
-        ActivePage = TabSheetConvert
+        ActivePage = TabSheet7
         Align = alClient
         TabOrder = 0
-        ExplicitHeight = 344
         object TabSheetConvert: TTabSheet
           Margins.Left = 0
           Margins.Top = 0
@@ -4082,7 +4057,6 @@ object FibonacciR: TFibonacciR
           Margins.Bottom = 0
           Caption = 'Konwersja'
           ImageIndex = 1
-          ExplicitHeight = 316
           DesignSize = (
             478
             181)
@@ -4193,7 +4167,7 @@ object FibonacciR: TFibonacciR
             Left = 16
             Top = 16
             Width = 210
-            Height = 135
+            Height = 131
             Cursor = crHandPoint
             Hint = 'Przenie'#347' i upu'#347#263' zdj'#281'cie tutaj'
             Anchors = [akLeft, akTop, akRight, akBottom]
@@ -4213,12 +4187,11 @@ object FibonacciR: TFibonacciR
             ParentShowHint = False
             ShowHint = True
             TabOrder = 1
-            ExplicitHeight = 270
             object ImagePreview: TImage
               Left = 0
               Top = 0
               Width = 206
-              Height = 131
+              Height = 127
               Hint = 'Podgl'#261'd obrazu'
               Align = alClient
               AutoSize = True
@@ -4235,7 +4208,7 @@ object FibonacciR: TFibonacciR
             Left = 267
             Top = 128
             Width = 208
-            Height = 56
+            Height = 52
             Anchors = [akTop, akRight, akBottom]
             Caption = 'Konwertuj'
             Enabled = False
@@ -4381,22 +4354,20 @@ object FibonacciR: TFibonacciR
             Spacing = 15
             TabOrder = 2
             OnClick = ButtonKonwertujClick
-            ExplicitHeight = 162
           end
         end
         object TabSheetBatchConvert: TTabSheet
           Caption = 'Przetwarzanie wsadowe'
           ImageIndex = 2
-          ExplicitHeight = 316
           DesignSize = (
             478
             181)
           object ValueListEditorBatch: TValueListEditor
             AlignWithMargins = True
             Left = 0
-            Top = 57
+            Top = 61
             Width = 478
-            Height = 124
+            Height = 120
             Margins.Left = 0
             Margins.Right = 0
             Margins.Bottom = 0
@@ -4460,7 +4431,6 @@ object FibonacciR: TFibonacciR
         end
         object TabSheet7: TTabSheet
           Caption = 'Opcje'
-          ExplicitHeight = 316
           object GroupBox6: TGroupBox
             Left = 3
             Top = 3
@@ -5153,7 +5123,7 @@ object FibonacciR: TFibonacciR
     Left = 80
     Top = 280
     Bitmap = {
-      494C01011C00C800440410001000FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
+      494C01011C00C800540410001000FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000008000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -6688,7 +6658,7 @@ object FibonacciR: TFibonacciR
     Left = 112
     Top = 280
     Bitmap = {
-      494C01010700C800D00010001000FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
+      494C01010700C800E00010001000FFFFFF00FF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       000000000000000000000000000000000000FFFFFF00EFA400FFEFA400FFEFA4
       00FFEFA400FFEFA400FFEFA400FFEFA400FFFFFFFF0000B9FFFF00B9FFFF00B9
@@ -6966,7 +6936,7 @@ object FibonacciR: TFibonacciR
     Left = 16
     Top = 328
     Bitmap = {
-      494C01012300300084001000100000000000FF10FFFFFFFFFFFFFFFF424D3600
+      494C01012300300094001000100000000000FF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000009000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
