@@ -75,7 +75,7 @@ Linear_Func::Linear_Func( Punkt a, Punkt b )
 	if ( a.X != b.X )   {
 		if ( a.Y != b.Y )
 		{
-			A = Minus( a.Y, b.Y ) / Minus( a.X, b.X );
+			A = (double)( a.Y - b.Y ) / ( a.X - b.X );
 		}
 	}
 	else
@@ -83,20 +83,19 @@ Linear_Func::Linear_Func( Punkt a, Punkt b )
 		A = 0;
 	}
 
-    B = - ( (A * a.X) - a.Y );
-    // środek
-	S.X = (Minus( a.X, b.X ) / 2.0) + Min( a.X, b.X );
-	S.Y = (Minus( a.Y, b.Y ) / 2.0) + Min( a.Y, b.Y );
+//    B = - ( (A * a.X) - a.Y );    // old
+	B = b.Y - A * b.X;
 
-  //  setIntensity();
- //   cout << S.X <<endl <<S.Y<<endl;
+	// środek
+	S.X = (a.X + b.X) / 2.0;
+	S.Y = (a.Y + b.Y) / 2.0;
 
     /// wyznaczanie prostej prostopadłej
     //  (z ang.) normal = prostopadła
 
 	// wyznaczanie współczynnika kierunkowego dla funkcji prostopadłej
 	if ( A != 0 )
-		Anormal = 1 / A;
+		Anormal = - 1.0 / A;
 	else
 		Anormal = 1;      // ATTENTION - breakpoit:  co się dzieje czy nie powinno być 0
 //    black(Anormal);
@@ -162,6 +161,14 @@ double Linear_Func::CalcForNormal( double x )
 {
     return Anormal * x - Bnormal;     /// y = ax + b;
 //	return Anormal * x;
+}
+
+double Linear_Func::CalcForNormal( double x , Punkt p)
+{
+//	return - ( Anormal * x - Y ) + 3*Bnormal;     /// y = ax + b;
+//	return Anormal * x;                // -b = ax -y;
+double pB = p.Y - Anormal * p.X;
+return Anormal * x + pB ;
 }
 
 double Linear_Func::CalcForNormal( Punkt z )      // przeci¹¿enie ta funkcja sama pobierze wartoœæ x z obiektu Point

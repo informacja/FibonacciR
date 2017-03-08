@@ -44,7 +44,8 @@ public:
 
     double CalcFor( double x );
 	double CalcFor( Punkt to_get_Y_position );      // przeci¹¿enie ta funkcja sama pobierze wartoœæ x z obiektu Point
-    double CalcForNormal( double x );
+	double CalcForNormal( double x );
+	double CalcForNormal( double x , Punkt P1orP2 );
     double CalcForNormal( Punkt to_get_Y_position );      // przeci¹¿enie ta funkcja sama pobierze wartoœæ x z obiektu Point
 	double CalcYforNormalX( double y );
 
