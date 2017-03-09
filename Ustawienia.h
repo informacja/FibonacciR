@@ -258,6 +258,8 @@ __published:	// IDE-managed Components
 	void __fastcall ButtonCloseClick(TObject *Sender);
 	void __fastcall ButtonCloseKeyPress(TObject *Sender, System::WideChar &Key);
 	void __fastcall TrayIcon1Click(TObject *Sender);
+	void __fastcall CheckBoxPointTopClick(TObject *Sender);
+	void __fastcall CheckBoxCanMoveClick(TObject *Sender);
 
 
 

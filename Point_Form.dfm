@@ -27,6 +27,7 @@ object WPoint: TWPoint
   StyleElements = []
   OnCreate = FormCreate
   OnDblClick = FormDblClick
+  OnMouseUp = FormMouseUp
   OnPaint = FormPaint
   PixelsPerInch = 96
   TextHeight = 13

@@ -30,10 +30,13 @@ __fastcall TWPoint::TWPoint(TComponent* Owner, unsigned id = ID::DEFAULT)
 
 __fastcall TWPoint::TWPoint(TComponent* Owner, unsigned id = ID::DEFAULT,
 					int x = 0, int y = 0, bool CanMove)
-	: TForm(Owner), ID(id), move(CanMove)
+	: TForm(Owner), ID(id), Movable(CanMove)
 {
 	Move_WND( this->Handle, x, y );
 	this->Show();
+	move = false;
+	if ( id == MAIN) Movable = true;
+	else          	Movable = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TWPoint::FormDblClick(TObject *Sender)
@@ -53,15 +56,22 @@ void __fastcall TWPoint::Image1DblClick(TObject *Sender)
 void __fastcall TWPoint::Image1MouseMove(TObject *Sender, TShiftState Shift, int X,
 		  int Y)
 {
-    POINT p;
-	if (GetCursorPos(&p))
+	if ( Movable )
 	{
-		if (move)
-		//if ( X>1000 )
+		POINT p;
+		if (GetCursorPos(&p))
 		{
-			pozX = p.x;
-			pozY = p.y;
-			Move_WND( this->Handle, p.x, p.y );
+			if (move)
+			{
+				pozX = p.x;
+				pozY = p.y;
+				Move_WND( this->Handle, p.x, p.y );
+
+				if ( ID == MAIN )
+				{
+//					static_cast<TFibonacciR>(this->Parent);      // TO DO sterowanie Ownerem
+				}
+			}
 		}
 	}
 }
@@ -79,7 +89,7 @@ void __fastcall TWPoint::Image1MouseDown(TObject *Sender, TMouseButton Button, T
 void __fastcall TWPoint::Image1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
 		  int X, int Y)
 {
-  move = false;
+  move = false; 
 }
 //---------------------------------------------------------------------------
 
@@ -87,21 +97,15 @@ void __fastcall TWPoint::FormCreate(TObject *Sender)
 {
 	DoubleBuffered = true;
 
-
 	if (GetWindowRect( this->Handle, &Rect) )
 	{
 		pozX = Rect.left;
 		pozY = Rect.top;
-		LogSave(pozY);
+//		LogSave(pozY);
 	}
 	else ShowError( "B³¹d pobrania rozmiau okna in TWPoint::FormCreate", NULL, Sender );
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
 
 void __fastcall TWPoint::FormPaint(TObject *Sender)
 {
@@ -110,11 +114,11 @@ void __fastcall TWPoint::FormPaint(TObject *Sender)
 		pozX = Rect.left;
 		pozY = Rect.top;
 
-		LogSave( Rect.top );  		LogSave( Rect.bottom  );
-		LogSave( Rect.right );
-
-		LogSave( Rect.left );
-		LogSave( "\n" );
+//		LogSave( Rect.top );  		LogSave( Rect.bottom  );
+//		LogSave( Rect.right );
+//
+//		LogSave( Rect.left );
+//		LogSave( "\n" );
 	}
 	else ShowError( "B³¹d pobrania rozmiau okna in TWPoint::FormPaint", NULL, Sender );
 }
@@ -122,9 +126,19 @@ void __fastcall TWPoint::FormPaint(TObject *Sender)
 
 void __fastcall TWPoint::Image1Click(TObject *Sender)
 {
-   PixelsPerInch = 200;
-   this->Update();
-   this->Repaint();
+//   PixelsPerInch = 200;
+//   this->Update();
+//   this->Repaint();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TWPoint::FormMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y)
+{
+  if ( this->ID == MAIN ) {
+
+      ShowMessage(55);
+  }
 }
 //---------------------------------------------------------------------------
 

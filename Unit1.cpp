@@ -118,8 +118,8 @@ __fastcall TFibonacciR::TFibonacciR(TComponent* Owner) : TForm(Owner) {
  P1 = NULL;     // Punkty wyznaczania
  P2 = NULL;
 
- P1 = new TWPoint(this);
- P2 = new TWPoint(this);
+ P1 = new TWPoint(this, MAIN, -32, -32, true );
+ P2 = new TWPoint(this, MAIN, -32, -32, true );
 
  Reg = new TRegistry();
 
@@ -3569,7 +3569,6 @@ void __fastcall TFibonacciR::Create4NormalArrows( Linear_Func *a, int x, int y )
 	y = (int) a->CalcForNormal( x , Punkt( P2->pozX, P2->pozY ));
 
 	point_array.push_back( new TWPoint( this, ID::NORMAL_TO_LINE, x, y ) );
-
 }
 
 //---------------------------------------------------------------------------
@@ -3713,4 +3712,5 @@ void __fastcall TFibonacciR::Button10Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 

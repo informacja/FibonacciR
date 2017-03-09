@@ -2879,7 +2879,7 @@ object Form2: TForm2
       object Label5: TLabel
         Left = 19
         Top = 98
-        Width = 454
+        Width = 468
         Height = 13
         Caption = 
           '----------------------------------------------------------------' +
@@ -2939,6 +2939,7 @@ object Form2: TForm2
         Height = 17
         Caption = 'Strza'#322'ki zawsze na wierzchu'
         TabOrder = 3
+        OnClick = CheckBoxPointTopClick
       end
       object CheckBoxCanMove: TCheckBox
         Left = 30
@@ -2947,6 +2948,7 @@ object Form2: TForm2
         Height = 17
         Caption = 'Zmiana pozycji strza'#322'ek'
         TabOrder = 4
+        OnClick = CheckBoxCanMoveClick
       end
     end
     object TabSheet4: TTabSheet
@@ -3967,7 +3969,7 @@ object Form2: TForm2
     Left = 416
     Top = 168
     Bitmap = {
-      494C010103000800700110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800740110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF

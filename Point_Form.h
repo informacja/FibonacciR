@@ -13,7 +13,6 @@
 #include <Vcl.Graphics.hpp>
 
 class TFibonacciR;
-class TFormMain;        // todel
 
 
 //---------------------------------------------------------------------------
@@ -31,10 +30,13 @@ __published:	// IDE-managed Components
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormPaint(TObject *Sender);
 	void __fastcall Image1Click(TObject *Sender);
+	void __fastcall FormMouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
 
 
 private:	// User declarations
 	volatile bool move;
+
 	RECT Rect;
 
 	TFibonacciR* mFormMain;
@@ -43,6 +45,7 @@ private:	// User declarations
 public:		// User declarations
 	volatile 	int pozX, pozY;
 	const unsigned ID;
+	bool Movable;
 	__fastcall TWPoint(TComponent* Owner);
 	__fastcall TWPoint(TComponent* Owner, unsigned ID_0 );
 	__fastcall TWPoint(TComponent* Owner, unsigned ID_0, int x, int y, bool CanMove = false );
@@ -63,6 +66,7 @@ enum ID
 	DEFAULT = 0,
 	ON_LINE,
 	NORMAL_TO_LINE,
+	MAIN,
 	SECTION_SPACE,
 	REST
 };

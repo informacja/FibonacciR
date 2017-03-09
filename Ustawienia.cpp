@@ -1369,3 +1369,49 @@ void __fastcall TForm2::TrayIcon1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm2::CheckBoxPointTopClick(TObject *Sender)
+{
+	if (CheckBoxPointTop->Checked)
+	{
+		for(int i = 0; i < FibonacciR->point_array.size(); i++)
+		{
+//			if ( FibonacciR->point_array[i]->ID != MAIN ) {
+				FibonacciR->point_array[i]->FormStyle = TFormStyle::fsStayOnTop;
+//			}
+		}
+	}
+	else
+	{
+		for(int i = 0; i < FibonacciR->point_array.size(); i++)
+		{
+//			if ( FibonacciR->point_array[i]->ID != MAIN ) {
+				FibonacciR->point_array[i]->FormStyle = TFormStyle::fsNormal;
+//			}
+		}
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::CheckBoxCanMoveClick(TObject *Sender)
+{
+    	if (CheckBoxPointTop->Checked)
+	{
+		for(int i = 0; i < FibonacciR->point_array.size(); i++)
+		{
+			if ( FibonacciR->point_array[i]->ID != MAIN ) {
+				FibonacciR->point_array[i]->Movable = true;
+			}
+		}
+	}
+	else
+	{
+		for(int i = 0; i < FibonacciR->point_array.size(); i++)
+		{
+			if ( FibonacciR->point_array[i]->ID != MAIN ) {
+				FibonacciR->point_array[i]->Movable = false;
+			}
+		}
+	}
+}
+//---------------------------------------------------------------------------
+
