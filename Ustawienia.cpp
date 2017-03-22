@@ -1394,7 +1394,7 @@ void __fastcall TForm2::CheckBoxPointTopClick(TObject *Sender)
 
 void __fastcall TForm2::CheckBoxCanMoveClick(TObject *Sender)
 {
-    	if (CheckBoxPointTop->Checked)
+if (!CheckBoxPointTop->Checked)
 	{
 		for(int i = 0; i < FibonacciR->point_array.size(); i++)
 		{

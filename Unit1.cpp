@@ -3441,8 +3441,16 @@ void __fastcall TFibonacciR::ButtonLinFuncClick(TObject *Sender)
 	fiX = FI * Minus( P1->pozX, P2->pozX );
 
 	Create4OnLineArrows( &a, x, y );
-
+		String e = "abs(A) < 1 | a = ";
+		e +=  a.A ;
 //	Create4NormalArrows( &aForNormal, x, y );
+		if ( fabs(a.A) < 1 ) {
+		  StatusInfo( e );
+		}
+		else {
+		 e =  a.A ;
+		  StatusInfo( e );
+        }
 	Create4NormalArrows( &a, x, y );
 
 }
@@ -3487,9 +3495,23 @@ void __fastcall TFibonacciR::Create4OnLineArrows( Linear_Func *a, int x, int y )
 // ----- Line point 2 -----
 
 	x = P2->pozX - fiX;
-		if ( P1->pozX > P2->pozX ) { x = P1->pozX - fiX; }
 
-	y = (int)a->CalcFor( x );
+	if ( P1->pozX > P2->pozX ) { x = P1->pozX - fiX; }
+
+	if ( P1->pozX != P2->pozX )
+	{
+		y = (int)a->CalcFor( x );
+	}
+	else // jesli w pionie
+	{
+		if (  P1->pozX < P2->pozX) {
+		   y = P1->pozX - fiX;
+		}
+		else
+		{
+		   y = P2->pozX - fiX;
+		}
+	}
 
 	point_array.push_back( new TWPoint( this, ID::ON_LINE, x, y ) );  			// 1 to ID Liniowych
 
@@ -3501,7 +3523,33 @@ void __fastcall TFibonacciR::Create4OnLineArrows( Linear_Func *a, int x, int y )
 	} else { 	x = P1->pozX + fiX;
 	}
 
-	y = (int)a->CalcFor( x );
+		if ( P1->pozX != P2->pozX )
+	{
+		y = (int)a->CalcFor( x );
+	}
+	else // jesli w pionie
+	{
+		if (  P1->pozX > P2->pozX) {
+		   y = P1->pozX + fiX;
+		}
+		else
+		{
+		   y = P2->pozX + fiX;
+		}
+	}
+
+	ShowMessage(
+						Length( Punkt( P1->pozX, P1->pozY ),
+						  Punkt( P2->pozX, P2->pozY )
+						)
+					   	/Length( Punkt( x, y ),                        // from point
+						 ( P1->pozY < P2->pozY ) ?             // to point
+						 Punkt( P1->pozX, P1->pozY ) :
+						 Punkt( P2->pozX, P2->pozY )
+//
+					   )
+
+				);             // wartoœæ w procentach
 
 	point_array.push_back( new TWPoint( this, ID::ON_LINE, x, y ) );  			// 1 to ID Liniowych
 

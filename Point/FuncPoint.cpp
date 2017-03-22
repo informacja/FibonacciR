@@ -35,8 +35,9 @@ void Show ( Punkt a )
 
 double Minus( double a, double b )
 {
-    if ( a < b )
-        return b - a;
+//	if ( a < b )
+	if ( fabs( b - a ) < 0.000000001 )
+		return b - a;
     else
         return a - b;
 }
@@ -47,8 +48,10 @@ double Length( Punkt p1, Punkt p2 )
 {
     double a, b = 0;
 
-    a = Minus( p1.X, p2.X );
-    b = Minus( p1.Y, p2.Y );
+//    a = Minus( p1.X, p2.X );
+//	b = Minus( p1.Y, p2.Y );
+	a = p1.X - p2.X;
+	b = p1.Y - p2.Y;
 
     if ( a == b || b == 0 )
     {
@@ -56,8 +59,8 @@ double Length( Punkt p1, Punkt p2 )
         Show(p1); Show(p2);
     }
 
+//	return sqrt( a*a + b*b );
 	return sqrt( a*a + b*b );
-
 }
 
 // ---------------------------------------------------------------------------
@@ -69,7 +72,7 @@ double Min( double a, double b)
 }
 
 // ------------------------------------------------------
-
+ #include <limits>
 Linear_Func::Linear_Func( Punkt a, Punkt b )
 {
 	if ( a.X != b.X )   {
@@ -101,7 +104,18 @@ Linear_Func::Linear_Func( Punkt a, Punkt b )
 //    black(Anormal);
 
 	// obliczanie wyrazu wolnego, funkcji prostopadłej, tak by przechodziła przez punkt S( pomiędzy punktami A i B )
-	Bnormal = (Anormal * S.X) - S.Y + (Minus( a.Y, b.Y ) );
+
+	if ( (Anormal < 0.0) == (S.X < 0.0)
+	&& std::abs( S.X ) > std::numeric_limits<double>::max() - std::abs( Anormal ) ) {
+	//  Addition would overflow...
+
+
+	Bnormal = (Anormal * S.X) - S.Y + 0 ;
+	}
+	else
+	{
+	 Bnormal =  0;
+    }
 //	Bnormal = -(Minus( a.Y, b.Y ) / 2.0);
 
     //srodek.X = ( Bnormal - B ) / ( Anormal - A );

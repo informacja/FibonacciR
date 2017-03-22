@@ -61,7 +61,7 @@ void __fastcall TWPoint::Image1MouseMove(TObject *Sender, TShiftState Shift, int
 		POINT p;
 		if (GetCursorPos(&p))
 		{
-			if (move)
+			if (move)          //by reference
 			{
 				pozX = p.x;
 				pozY = p.y;
