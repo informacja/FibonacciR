@@ -97,12 +97,12 @@
 #include "Enum.h"
 #include "integrity.h"                     										// obliczenia fi dla int    (zwyk³e, ca³kowite)
 #include "floating.h"                     										// obliczenia fi dla double (zaawansowane)
-#include "Wa¿ne.h"
+#include "Wazne.h"
 #include "Akcje.h"
 #include "Func.h"
 #include "Ustawienia.h"
 #include "Wprogramie.h"
-#include "Nieznacz¹ce_polecenia.h"
+#include "Nieznaczace_polecenia.h"
 #include "Times.h"
 #include "Picture.h"
 #include "Generic.h"

@@ -6,7 +6,7 @@
         <AppType>Application</AppType>
         <MainSource>Fibonacci.cpp</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
     </PropertyGroup>
@@ -141,14 +141,14 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <LinkPackageStatics>rtl.lib;vcl.lib;VclSmp.lib;vclx.lib;bcbsmp.lib;vclimg.lib;IndySystem.lib;IndyProtocols.lib;IndyCore.lib;vclFireDAC.lib;FireDAC.lib;FireDACSqliteDriver.lib;FireDACCommonDriver.lib;FireDACCommon.lib;xmlrtl.lib;dbrtl.lib;vcldb.lib;vclactnband.lib;dsnap.lib;vclribbon.lib;vcltouch.lib</LinkPackageStatics>
         <DynamicRTL>true</DynamicRTL>
         <BRCC_DeleteIncludePath>true</BRCC_DeleteIncludePath>
         <DCC_MinStackSize>4096</DCC_MinStackSize>
         <BCC_PCHCache>true</BCC_PCHCache>
-        <LinkPackageImports>rtl.bpi;vcl.bpi;VclSmp.bpi;vclx.bpi;bcbsmp.bpi;vclimg.bpi;IndySystem.bpi;IndyProtocols.bpi;IndyCore.bpi;vclFireDAC.bpi;FireDAC.bpi;FireDACSqliteDriver.bpi;FireDACCommonDriver.bpi;FireDACCommon.bpi;xmlrtl.bpi;dbrtl.bpi;vcldb.bpi;vclactnband.bpi;dsnap.bpi;vclribbon.bpi;vcltouch.bpi</LinkPackageImports>
         <IncludePath>D:\Builder\FibonacciR\Common;D:\Builder\FibonacciR\Dialogs;$(IncludePath)</IncludePath>
         <VerInfo_Build>7</VerInfo_Build>
-        <UsePackages>true</UsePackages>
+        <UsePackages>false</UsePackages>
         <ILINK_DisableWarnings>false</ILINK_DisableWarnings>
         <ILINK_SelectedWarnings>true</ILINK_SelectedWarnings>
         <VerInfo_Keys>CompanyName=Hera ;FileDescription=FibonacciR;FileVersion=0.4.0.7;InternalName=Fibo;LegalCopyright=Hera ;LegalTrademarks=PW;OriginalFilename=Fibonacci;ProductName=FibonacciR;ProductVersion=0.0.0.4;Comments=beta </VerInfo_Keys>
@@ -174,7 +174,6 @@
         <LinkPackageStatics>rtl.lib;vcl.lib;VclSmp.lib;vclx.lib;bcbsmp.lib;vclimg.lib;IndySystem.lib;IndyProtocols.lib;IndyCore.lib;vclFireDAC.lib;FireDAC.lib;FireDACSqliteDriver.lib;FireDACCommonDriver.lib;FireDACCommon.lib;xmlrtl.lib;dbrtl.lib;vcldb.lib;vclactnband.lib;dsnap.lib;vclribbon.lib;vcltouch.lib</LinkPackageStatics>
         <UsePackages>false</UsePackages>
         <VerInfo_AutoIncVersion>false</VerInfo_AutoIncVersion>
-        <DynamicRTL>false</DynamicRTL>
         <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <ILINK_LibraryPath>$(BDS)\lib\win32\release\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
@@ -252,8 +251,8 @@
             <Form>Messages.res</Form>
             <BuildOrder>0</BuildOrder>
         </ResourceCompile>
-        <CppCompile Include="Nieznaczące_polecenia.cpp">
-            <DependentOn>Nieznaczące_polecenia.h</DependentOn>
+        <CppCompile Include="Nieznaczace_polecenia.cpp">
+            <DependentOn>Nieznaczace_polecenia.h</DependentOn>
             <BuildOrder>7</BuildOrder>
         </CppCompile>
         <CppCompile Include="Point\FuncPoint.cpp">
@@ -300,8 +299,8 @@
             <DependentOn>Ustawienia.h</DependentOn>
             <BuildOrder>2</BuildOrder>
         </CppCompile>
-        <CppCompile Include="Ważne.cpp">
-            <DependentOn>Ważne.h</DependentOn>
+        <CppCompile Include="Wazne.cpp">
+            <DependentOn>Wazne.h</DependentOn>
             <BuildOrder>3</BuildOrder>
         </CppCompile>
         <CppCompile Include="Wprogramie.cpp">
@@ -365,6 +364,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\Fibonacci.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>Fibonacci.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -372,12 +377,6 @@
                 </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32220.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\Fibonacci.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>Fibonacci.tds</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -820,13 +819,13 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Win32">True</Platform>

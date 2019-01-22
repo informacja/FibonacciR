@@ -4,7 +4,7 @@
 #pragma hdrstop
 #include <tchar.h>
 #include "Func.h"
-#include "Wa¿ne.h"
+#include "Wazne.h"
 #include "SplashR.h"
 #include "Dialogs/ClosePsDlg.h"
 #include "Validation.h"

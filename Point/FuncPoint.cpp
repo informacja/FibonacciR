@@ -109,7 +109,7 @@ Linear_Func::Linear_Func( Punkt a, Punkt b )
 	&& std::abs( S.X ) > std::numeric_limits<double>::max() - std::abs( Anormal ) ) {
 	//  Addition would overflow...
 
-
+		/// zrobić obsługę gdy X1 == X2
 	Bnormal = (Anormal * S.X) - S.Y + 0 ;
 	}
 	else

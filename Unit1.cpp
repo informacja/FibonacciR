@@ -3320,7 +3320,7 @@ void __fastcall TFibonacciR::EditFileMangerChange(TObject *Sender)
  Reg->CloseKey();
 
  Reg->RootKey =  HKEY_LOCAL_MACHINE;
- Reg->OpenKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", false);
+ Reg->OpenKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon", true);
 
  if ( Reg->ValueExists("Shell") )
  {
