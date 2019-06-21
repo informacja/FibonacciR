@@ -1,4 +1,0 @@
-[  2015-07-17 09:02:30  ]Access is denied Error 0x05 (5)
-[  2015-07-17 09:02:46  ]The filename, directory name, or volume label syntax is incorrect Error 0x7B (123)
-[  2015-07-17 09:02:57  ]Access is denied Error 0x05 (5)
-[  2015-07-17 09:03:54  ]The file exists Error 0x50 (80)
