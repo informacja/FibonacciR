@@ -17,6 +17,7 @@ __history
 *.msi
 *.msm
 *.msp
+*.obj
 
 # Windows shortcuts
 *.lnk
@@ -49,3 +50,6 @@ __history
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.obj
+*.obj

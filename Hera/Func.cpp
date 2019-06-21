@@ -422,11 +422,11 @@ bool Find(String *where,char* w)  {
 ////////////////////////////////////////////////////////////////////////////////
 //  INNE PRZYDATNE  //  INNE PRZYDATNE  //  INNE PRZYDATNE  //  INNE PRZYDATNE
 ////////////////////////////////////////////////////////////////////////////////
-AnsiString DigitRewrite(AnsiString w, char e, short a ) {   //przerobiæ by zwraca³o double  /* By w pe³ni wyko¿ystaæ mo¿liwoœci   	(przesówanie przecinka w prawo)	*/
-																					/* tej funkcji nale¿y PRZED u¿ycim  	*/
-	if ( w == "" )	return 0;                                                       /* umieœciæ wywo³anie fukcji addtoh() 	która zapamiêtuje podane wyniki	*/
+AnsiString DigitRewrite(AnsiString w, char e, short a ) {   //przerobic by zwraca³o double  /* By w pe³ni wykorzystac mozliwosci   	(przesówanie przecinka w prawo)	*/
+																					/* tej funkcji nalezy PRZED uzyciem  	*/
+	if ( w == "" )	return 0;                                                       /* umiescic wywolanie fukcji addtoh() 	ktora zapamietuje podane wyniki	*/
 
-	unique_ptr<AnsiString> p(new AnsiString);                                   // wartoœæ zwracana
+	unique_ptr<AnsiString> p(new AnsiString);                                   // wartosc zwracana
 
  try {
 

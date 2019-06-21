@@ -4,9 +4,8 @@
 
 	#define FINAL
 
-#define NO_WIN32_LEAN_AND_MEAN 													// zapobieganie wyst¹pienia b³êdów z <shlobj.h>
+#define NO_WIN32_LEAN_AND_MEAN 													// zapobieganie wystapienia bledow z <shlobj.h>
 
-#include "cspin.h"
 #include <System.Actions.hpp>
 #include <System.Classes.hpp>
 #include <System.ImageList.hpp>
@@ -39,6 +38,7 @@
 #include <Vcl.ToolWin.hpp>
 #include <Vcl.CheckLst.hpp>
 #include <math.h>
+#include "cspin.h"
 //---------------------------------------------------------------------------
 
 #ifdef _WIN32
@@ -631,6 +631,8 @@ private:
 
 	THsearch *thWatek[ 9 ]; //= { NULL };  	//  wskaŸnik na w¹tki i jego metody
 
+        char currsor_history[4];
+
 
 //	void __fastcall SendMail(char * Adress, char * Title, char * Note, String FileName);
 
@@ -667,6 +669,8 @@ public:
 	vector<TWPoint*> point_array; // tablica okienek ze wskaŸnikami [0] to celownik
 
 	void set_main_point_pos( TWPoint *, TForm * ); // ustawia now¹ pozycjê Punktu ( P1 lub P2 )
+
+	void update_currsor_histry(char pos);	// przesowa historie kursora
 
 	__fastcall TMyAss(TComponent* Owner);
 

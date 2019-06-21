@@ -118,13 +118,13 @@ ProgressBar1 = new TProgressBar(this);
 	return result;
 }
 // --------------------------------------------------------------------------- // jeœli false to blokuje uruchomienie tej aplikacji
-BOOL CALLBACK EnumWindowsProcMy(HWND hwnd,LPARAM lParam)                        // znalezione
+ BOOL CALLBACK EnumWindowsProcMy(HWND hwnd,LPARAM lParam)                        // znalezione
 {
 	DWORD lpdwProcessId;
 	GetWindowThreadProcessId(hwnd, &lpdwProcessId);
-	if(lpdwProcessId==lParam)
+	if(lpdwProcessId==(unsigned long)lParam)
 	{
-		g_HWND = hwnd;
+		ClosePS->g_HWND = hwnd;
 		return FALSE;
 	}
 	return TRUE;

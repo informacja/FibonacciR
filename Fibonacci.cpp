@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+ï»¿//---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -21,7 +21,7 @@ USEFORM("Dialogs\ClosePsDlg.cpp", ClosePS);
 USEFORM("Dialogs\DialogScan.cpp", SearchPref);
 //---------------------------------------------------------------------------
 extern void BringToForeground(DWORD processId);
-//extern HWND g_HWND;
+//extern HWND TClosePS::g_HWND;
 //---------------------------------------------------------------------------
  int WINAPI _tWinMain(HINSTANCE, HINSTANCE, wchar_t *cmdLine, int)
 {
@@ -29,9 +29,9 @@ extern void BringToForeground(DWORD processId);
 
 //	   FindControlParam();
 
-//	   DuplicateAppCheckParam( L"FI", cmdLine );    //BUG                          	// obs³uga kolejnych wywo³añ programu z parametrem
+//	   DuplicateAppCheckParam( L"FI", cmdLine );    //BUG                          	// obsÑ–uga kolejnych wywoÑ–aÑ programu z parametrem
 
-//	   EarlierIsMinimized();													// jeœli poprzednie wyst¹pienie zminimalizowane
+//	   EarlierIsMinimized();													// jeÑšli poprzednie wystâ„–pienie zminimalizowane
 
 //	   ShowSplash(5000);
 //
@@ -46,34 +46,34 @@ extern void BringToForeground(DWORD processId);
 
 		CreateMutexA(NULL, TRUE, "FI");
 
-			if (GetLastError() == ERROR_ALREADY_EXISTS) {                       // jeœli powy¿szy muteks istnieje
+			if (GetLastError() == ERROR_ALREADY_EXISTS) {                       // jeÑšli powyÑ—szy muteks istnieje
 
 //				Application->Minimize();
 //				ShowWindow(Application->Handle, SW_HIDE);
 
 				Application->ShowMainForm = false;             					// ikona programu
 //
-				if ( !FindDoublePS( ) )   return 0;                              // jeœli zwróci true zamkniêcie applikacji
+				if ( !FindDoublePS( ) )   return 0;                              // jeÑšli zwrÑƒci true zamkniÐºcie applikacji
 
-				// timer zamykaj¹cy?
+				// timer zamykajâ„–cy?
 
 //				MessageBoxA(Application->Handle, "Aplikacja FibonacciR jest uruchomiona.", "FibonacciR Error" , MB_OK);
 			}
 
-		BringToForeground( GetCurrentProcessId() );                   						// jeœli prze¿yje FindDoublePS()
+		BringToForeground( GetCurrentProcessId() );                   						// jeÑšli przeÑ—yje FindDoublePS()
 
 		Application->Run();
 
 	}
 	catch (Exception &exception) {
 
-		LogSave("B³¹d krytyczny aplikacji: " + exception.ToString() );
+		LogSave("BÅ‚Ä…d krytyczny aplikacji: " + exception.ToString() );
 		Application->ShowException(&exception);
 	}
 	catch (...) {
 
 		try {
-			LogSave("Nieznany b³¹d aplikacji. Application will throw Exception("");");
+			LogSave("Nieznany bÅ‚Ä…d aplikacji. Application will throw Exception("");");
 			throw Exception("");
 		}
 		catch (Exception &exception) {

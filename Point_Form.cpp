@@ -4,7 +4,7 @@
 #pragma hdrstop
 
 #include "Point_Form.h"
-#include "Wa¿ne.h"
+#include "Wazne.h"
 #include "Func.h"
 #include <cassert>
 //---------------------------------------------------------------------------

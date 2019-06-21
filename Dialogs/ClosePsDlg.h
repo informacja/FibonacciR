@@ -42,6 +42,8 @@ private:
 	void inicProgBar();
 
 public:
+            	HWND g_HWND;
+//       friend BOOL CALLBACK EnumWindowsProcMy(HWND hwnd,LPARAM lParam);														  // uchwyt do okna
 
 
 public:
@@ -49,7 +51,6 @@ public:
 	virtual __fastcall TClosePS(TComponent* AOwner, PROCESSENTRY32 );
 };
 
-	HWND g_HWND;														  // uchwyt do okna
 
 	bool FindDoublePS();
 	bool IsMorePS();

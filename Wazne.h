@@ -4,7 +4,7 @@
 #define Wa¿neH
 //---------------------------------------------------------------------------
 
-#include "cspin.h"
+//#include "cspin.h"
 #include <System.Actions.hpp>
 #include <System.Classes.hpp>
 #include <Vcl.ActnList.hpp>

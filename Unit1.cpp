@@ -10,7 +10,9 @@
 #pragma package(smart_init)
 #pragma link "cgauges"
 #pragma link "trayicon"
-#pragma link "cspin"
+//#pragma link "cspin"
+//#pragma link "cspin"
+//#pragma link "cspin"
 #pragma resource "*.dfm"
 TFibonacciR *FibonacciR;
 using namespace std;
@@ -269,11 +271,34 @@ if (Form2)                                                                      
 //	IconList->get
 //	TImage i;
 //	i.Picture->Icon->Handle =
+return 0;
 
  }
 
+void TFibonacciR::update_currsor_histry(char pos){
+	currsor_history[4] = currsor_history[3];
+	currsor_history[3] = currsor_history[2];
+	currsor_history[2] = currsor_history[1];
+	currsor_history[1] = currsor_history[0];
+	currsor_history[0] = pos;
+
+	UnicodeString a = currsor_history[0] + ", " + currsor_history[1];
+	StatusInfo( (int)currsor_history[1] + ", ");
+//        (int)currsor_history[1]. + ", " +
+//        (int)currsor_history[2] + ", " +
+//	(int)currsor_history[3];
+}
+
+
  void __fastcall TFibonacciR::wejChange(TObject *Sender) {
 
+//        Shift->
+//        wy1KeyDown->
+// 	TCursor buff = this->wy1->Cursor;
+        update_currsor_histry(wej->SelStart);
+//        buff.crMin;
+//	ShowMessage(buff);
+//	StatusInfo( Shift.ToInt(), 1 );
 //	 StatusInfo("");
 //
 //	 try {
@@ -315,8 +340,6 @@ void __fastcall TFibonacciR::wey1KeyDown(TObject *Sender, WORD &Key,	TShiftState
 
 
  void __fastcall TFibonacciR::wy1KeyDown(TObject *Sender, WORD &Key,	TShiftState Shift) {
-
-
 
 	if (Key == vkUp)		FibonacciR->FiFloat->incerment( (TEdit*) Sender );
 
@@ -2524,10 +2547,11 @@ void __fastcall TFibonacciR::InternetSendBugInfoMailUpdate(TObject *Sender)
 //---------------------------------------------------------------------------
 
 void __fastcall TFibonacciR::wy1KeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
-
 {
-FibonacciR->FiFloat->Key_Up( (TEdit*) Sender );
-FiFloat->save();
+
+	FibonacciR->FiFloat->Key_Up( (TEdit*) Sender );
+	FiFloat->save();
+
 }
 //---------------------------------------------------------------------------
 
@@ -2535,9 +2559,9 @@ void __fastcall TFibonacciR::EditADSSaveRightButtonClick(TObject *Sender)
 {
 	if ( EditADSSave->RightButton->ImageIndex == 20)
 		 EditADSSave->RightButton->ImageIndex  = 22;
-	else EditADSSave->RightButton->ImageIndex  = 20;
+	else EditADSSave->RightButton->ImageIndex = 20;
 
- ButtonedEditSearch->RightButton->ImageIndex = EditADSSave->RightButton->ImageIndex; // synchronizacja ikonek editów
+	ButtonedEditSearch->RightButton->ImageIndex = EditADSSave->RightButton->ImageIndex; // synchronizacja ikonek editów
  S::test = EditADSSave->Text; // synchronizacja ikonek editów
 
 }
@@ -3760,5 +3784,6 @@ void __fastcall TFibonacciR::Button10Click(TObject *Sender)
 
 }
 //---------------------------------------------------------------------------
+
 
 

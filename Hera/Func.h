@@ -48,7 +48,7 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Grids.hpp>
 #include <Vcl.ValEdit.hpp>
-#include "cspin.h"
+//#include "cspin.h"
 #include <System.ImageList.hpp>
 #include <Vcl.FileCtrl.hpp>
 
