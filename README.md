@@ -1,4 +1,4 @@
-# FibonacciR
+# <a href="https://github.com/informacja/FibonacciR/releases"> FibonacciR </a>
 Narzędzie dla projektantów, wykorzystuje złotą proporcję
 
 ## Demo
