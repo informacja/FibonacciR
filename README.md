@@ -6,3 +6,7 @@ Narzędzie dla projektantów, wykorzystuje złotą proporcję
 
 ## Builder 
 <img src="DEL1-files_removed_from_project/builder.png">
+
+## Arrows arranged by Fibonacci Golden Ratio
+<img src="DEL1-files_removed_from_project/arrows.gif">
+
