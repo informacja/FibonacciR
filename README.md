@@ -12,4 +12,4 @@ Narzędzie dla projektantów, wykorzystuje złotą proporcję
 
 
 
-<a href="releases"> <h3> Download Application </h3> </a>
+<a href="../../releases"> <h1> Download Application </h1> </a>
