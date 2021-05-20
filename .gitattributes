@@ -18,3 +18,4 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 *.dfm	 diff=astextplain
+*.dfm linguist-detectable=false
