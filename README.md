@@ -4,6 +4,11 @@ Narzędzie dla projektantów, wykorzystuje złotą proporcję
 ## Demo
 <img src="DEL1-files_removed_from_project/demo.gif">
 
+### Function AnsiString DigitRewrite()
+[
+![2019-01-25_21-39-27](https://user-images.githubusercontent.com/22752828/125493489-373977ab-48ad-4878-a1a8-ce5cf1adca69.gif)
+](https://github.com/informacja/FibonacciR/blob/78a9b1fa0164a40cf0c7cf8c522b22b986a2d9d8/Func.cpp#L459)
+
 ## Builder 
 <img src="DEL1-files_removed_from_project/builder.png">
 
